@@ -1,13 +1,92 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  line-height: 1em;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: rgb(255, 218, 151);
+  color: rgb(94, 3, 3);
+  text-align: center;
+}
+
+/* ---Header--- */
+
+.header {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  justify-content: space-around;
+  background: linear-gradient(#f59292, #f4c51cae);
+  padding: 3px 15px;
+  align-items: center;
+}
+
+.header__logo {
+  border: 1px solid red;
+  flex: 0 0 10%;
+  height: 80px;
+
+
+}
+
+.header__name {
+  flex: 0 0 30%;
+}
+
+.header__cart {
+  border: 1px solid black;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+}
+
+/* ---Home--- */
+
+.home {
+  padding: 130px 0 40px;
+}
+
+.home h2 {}
+
+.home__container {
+ 
+  margin: 30px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home__card {
+  flex: 0 0 370px;
+  margin: 0 30px 45px;
+  overflow: hidden;
+  background-color: hsla(0, 83%, 77%, 0.534);
+  border-radius: 20px;
+  padding: 15px;
+
+}
+
+/* ---Product--- */
+
+.product {}
+
+.product__image {
+  width: 80%;
+  height: 200px;
+  border-radius: 20px;
+  margin: 10px auto 0;
+  background-color: #f4c51cae;
+}
+
+.product__title {
+  margin: 25px 0;
+}
+
+.product__description {
+  line-height: 1.3em;
+  text-indent: 30px;
+  text-align: justify;
+  padding: 0 20px;
 }
