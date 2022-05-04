@@ -3,9 +3,15 @@ import Header from "../components/Header"
 const Cart = () => {
 
   return (
-    <div>
+    <div className="cart">
       <Header/>
-      Cart
+      <div className="container">
+        <h2>Your Cart</h2>      
+        <div className="cart__container">
+          
+        </div>
+      </div>
+
     </div>
   )
 }

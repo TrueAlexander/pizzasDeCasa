@@ -11,6 +11,32 @@ body {
   text-align: center;
 }
 
+.container {
+  padding: 130px 0 40px;
+}
+
+.btn {
+  border: none;
+  padding: 7px 15px;
+  background: linear-gradient(180deg, #f59292, #f4c51cae);
+  font-size: 1.2em;
+  border-radius: 20px;
+  font-weight: 400;
+  transition: all 0.1s ease;
+}
+
+.btn:hover {
+  box-shadow: 0 0 2px;
+  transform: scale(1.02);
+  transition: all 0.1s ease;
+}
+
+.description {
+  line-height: 1.3em;
+  text-indent: 30px;
+  text-align: justify;
+  padding: 0 20px;
+}
 /* ---Header--- */
 
 .header {
@@ -45,7 +71,7 @@ body {
 /* ---Home--- */
 
 .home {
-  padding: 130px 0 40px;
+ 
 }
 
 .home h2 {}
@@ -76,17 +102,116 @@ body {
   width: 80%;
   height: 200px;
   border-radius: 20px;
-  margin: 10px auto 0;
+  margin: 0 auto;
   background-color: #f4c51cae;
 }
 
 .product__title {
-  margin: 25px 0;
+  margin: 15px 0;
 }
 
-.product__description {
-  line-height: 1.3em;
-  text-indent: 30px;
-  text-align: justify;
-  padding: 0 20px;
+.product__btn {
+  font-size: 1em;
+  margin: 10px 0 0;
+}
+
+/* ---Item--- */
+.item .container {
+  margin: 0 30px;
+}
+
+.item__image {
+  max-width: 700px;
+  height: 400px;
+  background-color: #f4c51cae;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 30px auto;
+}
+
+.item__title {}
+
+.item__description {
+  margin: 20px 0;
+}
+
+.item__row {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: space-around;
+}
+
+.item__options {
+  flex: 0 1 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.item__input {
+  margin: 10px 20px;
+  
+}
+.item__input label {}
+
+.item__input input {
+  margin: 0 30px;
+  accent-color: rgb(94, 3, 3);
+  
+}
+
+.item__column {
+  flex: 0 1 50%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2em;  
+}
+
+.item__price {
+  display: inline-block;
+}
+
+.item__quantity {
+  margin: 10px 0;
+
+}
+
+.item__quantity span {
+  display: inline-block;
+  margin: 0 10px; 
+}
+
+.quantity__btn {
+
+  width: 35px;
+  height: 35px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.item__cost {
+  
+}
+
+.item__btn {
+  margin: 0 10px;
+}
+
+
+@media (max-width: 700px) {
+  .item__row {
+    flex-direction: column;
+  }
+
+  .item__options {
+    align-items: center;
+  }
+
+  .item__input input{
+    margin: 0 15px;
+    
+  }
 }

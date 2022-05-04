@@ -7,29 +7,31 @@ const Home = () => {
 
       <Header/>
       <div className="home">
-        <h2>Our Products</h2>
-        <div className="home__container">
-          <div className="home__card">
-            <Product/>
-          </div>
-          <div className="home__card">
-            <Product/>
-          </div>
-          <div className="home__card">
-            <Product/>
-          </div>
-          <div className="home__card">
-            <Product/>
-          </div>
-          <div className="home__card">
-            <Product/>
-          </div>
-          <div className="home__card">
-            <Product/>
-          </div>
 
+        <div className="container">
+          <h2>Our Products</h2>
+          <div className="home__container">
+            <div className="home__card">
+              <Product/>
+            </div>
+            <div className="home__card">
+              <Product/>
+            </div>
+            <div className="home__card">
+              <Product/>
+            </div>
+            <div className="home__card">
+              <Product/>
+            </div>
+            <div className="home__card">
+              <Product/>
+            </div>
+            <div className="home__card">
+              <Product/>
+            </div>
+          </div>
         </div>
-        
+      
       </div>
       
     </div>
