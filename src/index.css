@@ -348,5 +348,28 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 15px;
-  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 30px;
 }
+
+.modal__title {}
+
+.modal__subtitle {
+  margin: 20px 0;
+}
+
+/* ---Modal Form--- */
+
+.modal__form {
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+.modal__form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__form form input {}
