@@ -1,4 +1,5 @@
 import Header from "../components/Header"
+import { Link } from "react-router-dom"
 
 const Item = () => {
 
@@ -42,9 +43,12 @@ const Item = () => {
           </div>
         </div>
  
-        <button className="item__btn btn">Back to Menu</button>
-        <button className="item__btn btn">Add to Cart</button>
-        
+        <button className="item__btn btn">
+          <Link to="./..">Back to Menu</Link> 
+        </button>
+        <button className="item__btn btn">
+          <Link to="./../Cart">Add to Cart</Link> 
+        </button>
       </div>
     </div>
   )

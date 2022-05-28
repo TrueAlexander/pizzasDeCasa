@@ -348,7 +348,7 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 15px;
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   padding: 30px;
