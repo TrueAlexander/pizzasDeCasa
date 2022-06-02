@@ -1,34 +1,40 @@
 import Header from "../components/Header"
 import { Link } from "react-router-dom"
+import { useLocation } from "react-router-dom" 
 
 const Item = () => {
-
+  
+  const location = useLocation()
+  
+  console.log(location.state);
+  // const location = useLocation()
+  // const currentProduct = location.state?.currentProduct
+  // console.dir(location);
+  
   return (
     <div className="item">
       <Header/>
       <div className="container">
-        <div className="item__image">Product Image</div>
-        <div className="item__title"><h2>Product Title</h2></div>
-        <div className="item__description description">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, vel, vitae eveniet animi dolorem reprehenderit ratione dicta porro quidem dolor quia possimus officiis error suscipit ex quae beatae enim similique! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, architecto aperiam, rem delectus facere molestiae veritatis nisi velit minus, odit eveniet voluptas optio. Alias error in exercitationem illo modi consequatur.</div>
+        <div className="item__image">
+          <img src={location.state.img.img} alt={location.state.alt.alt} />
+        </div>
+        <div className="item__title"><h2>{location.state.title.title}</h2></div>
+        <div className="item__description description">{location.state.description.descr}</div>
         <div className="item__row">
           <div className="item__options">
             <div className="item__input">
-              <label htmlFor="1">Product X. Round. Option #1</label>
+              <label htmlFor="1">Quiche grande 27 cm de diametro</label>
               <input type="radio" name="options" value="1" defaultChecked />  
             </div>
             <div className="item__input">
-              <label htmlFor="2">Product X. Square. Option #2</label>
+              <label htmlFor="2">Combo 6 quiches de 7 cm de diametro</label>
               <input type="radio" name="options" value="2" />
-            </div>
-            <div className="item__input">
-              <label htmlFor="3">Product X. Triangle. Option #3</label>
-              <input type="radio" name="options" value="3" />
             </div>
           </div>
           <div className="item__column">
              <div className="item__price">
                <span>Price:  </span>
-               <span>100 Rs</span>    
+               <span>{location.state.price_grande.priceBig} Rs</span>    
              </div>
              <div className="item__quantity">
                <span>Quantity:  </span>

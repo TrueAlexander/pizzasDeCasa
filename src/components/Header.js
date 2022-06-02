@@ -1,15 +1,16 @@
 import HeaderCart from "./HeaderCart"
 import pizza from "./../images/icons/pizza_icon.svg"
+import { Link } from "react-router-dom"
 
 
 
 const Header = () => {
   return (
     <div className="header">
-      <a href="./../" className="header__logo">
+      <Link to="./../" className="header__logo">
         <img src={pizza} alt="pizza_logo"/>
-      </a>
-      <h1 className="header__name">Company name</h1>
+      </Link>
+      <h1 className="header__name">Quiches Em Casa</h1>
       <HeaderCart/>
     </div>
   )

@@ -36,7 +36,6 @@ body {
 .description {
   line-height: 1.3em;
   text-indent: 30px;
-  text-align: justify;
   padding: 0 20px;
 }
 
@@ -142,6 +141,11 @@ a {
   border-radius: 20px;
   margin: 0 auto;
   background-color: #f4c51cae;
+  overflow: hidden;
+}
+
+.product__image img {
+  width: 100%;
 }
 
 .product__title {
@@ -165,6 +169,11 @@ a {
   border-radius: 5px;
   overflow: hidden;
   margin: 30px auto;
+  overflow: hidden;
+}
+
+.item__image img {
+  width: 100%;
 }
 
 .item__title {}
