@@ -12,7 +12,7 @@ const Product = ({title, alt, descr, priceBig, priceCombo, img}) => {
         <div className="product__description description">{descr}</div>
         <Link 
           className="product__btn btn" 
-          to="./Item"
+          to="./../Item"
           state={{
             title: {title},
             img: {img},

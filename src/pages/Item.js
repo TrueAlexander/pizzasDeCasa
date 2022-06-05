@@ -1,14 +1,14 @@
 import Header from "../components/Header"
 import { Link } from "react-router-dom"
 import { useLocation } from "react-router-dom"
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 const Item = () => {
   
   const location = useLocation()
+  
 
   const itemTitle = location.state.title.title
-
   const [price, setPrice] = useState(location.state.price_grande.priceBig)
   const [quantity, setQuantity] = useState(1)
 
@@ -30,10 +30,56 @@ const Item = () => {
   //total cost
   const renderCost = () => price * quantity
 
+  //a function that send quantity and cost to /Header/HeaderCart
+  // const sendToHeaderCart = () => {
+    
+  //   const res = {
+  //     quantity: 666,
+  //     cost: 666,
+  //   }
   
+  //   return res
+  // }
+  
+
+  const addToCart = () => {
+    
+    //addition of a chosen product to local storage
+    const addCartItem = {
+      title: itemTitle,
+      quantity: {quantity},
+      price: renderPrice(),
+      cost: renderCost(),
+    }
+    const getCartItems = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
+    getCartItems.push(addCartItem)
+    localStorage.setItem("cartItems", JSON.stringify(getCartItems))
+    //
+
+    // call newCostValue
+    setValue(newCostValue())
+  }
+  
+  const newCostValue = () => {
+    const newCosts = JSON.parse(localStorage.getItem("cartItems"))  
+    function calc(arr) {
+      let res = 0
+      for ( let i = 0; i < arr.length; i++) res += arr[i].cost
+      return res 
+    }
+    return calc(newCosts) 
+  }
+  
+  const [value, setValue] =useState(localStorage.getItem("cartItems") ? newCostValue() : 0)
+  
+  console.log(value);
+
   return (
     <div className="item">
-      <Header/>
+      <Header 
+        value={value}
+        setValue={setValue}
+      />
       <div className="container">
         <div className="item__image">
           <img src={location.state.img.img} alt={location.state.alt.alt} />
@@ -68,19 +114,20 @@ const Item = () => {
              </div>
           </div>
         </div>
-        <Link className="item__btn btn" to="./..">Voltar ao Menu</Link> 
-        <Link 
-          className="item__btn btn" 
-          to="./../Cart"
-          state={{
-            title: itemTitle,
-            quantity: {quantity},
-            price: renderPrice(),
-            cost: renderCost(),
-          }}
+        <Link className="item__btn btn" to="./../Home">Voltar ao Menu</Link> 
+        <button 
+          className="item__btn btn"
+          onClick={addToCart}
+          // to="./../Cart"
+          // state={{
+          //   title: itemTitle,
+          //   quantity: {quantity},
+          //   price: renderPrice(),
+          //   cost: renderCost(),
+          // }}
         >
           Adicionar a cesta
-        </Link> 
+        </button> 
       </div>
     </div>
   )

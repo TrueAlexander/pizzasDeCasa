@@ -43,6 +43,40 @@ a {
   text-decoration: none;
   color: inherit;
 }
+
+/* ---Initial--- */
+
+.initial {
+  height: 100vh;
+  background-image: url("./images/fundo_inicial.jpg");
+  background-position: center;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: white;
+}
+
+.initial .btn {
+  width: fit-content;
+  margin: 0 auto;
+  text-shadow: 0 0 2px black, 0 0 5px #5e0303, 0 0 3px #5e0303;
+  border: 1px solid #5e0303;
+  box-shadow: 0 0 5px #5e0303;
+}
+
+.initial__title {
+  font-size: 55px;
+  letter-spacing: 5px;
+  background-color: #5e0303;
+  width: fit-content;
+  margin: 0 auto;
+  padding: 7px 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px white;
+  border: 1px solid white;
+}
+
 /* ---Header--- */
 
 .header {
@@ -163,12 +197,12 @@ a {
 }
 
 .item__image {
-  max-width: 700px;
-  height: 400px;
+  max-width: 550px;
+  height: 350px;
   background-color: #f4c51cae;
   border-radius: 5px;
   overflow: hidden;
-  margin: 30px auto;
+  margin: 0 auto 10px;
   overflow: hidden;
 }
 
@@ -179,12 +213,14 @@ a {
 .item__title {}
 
 .item__description {
-  margin: 20px 0;
+  margin: 10px auto;
+  max-width: 1000px;
+  text-align: justify;
+
 }
 
 .item__row {
   display: flex;
-  margin-bottom: 20px;
   justify-content: space-around;
 }
 
@@ -205,7 +241,6 @@ a {
 .item__input input {
   margin: 0 30px;
   accent-color: rgb(94, 3, 3);
-  
 }
 
 .item__column {

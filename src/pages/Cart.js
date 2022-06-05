@@ -3,52 +3,79 @@ import Header from "../components/Header"
 import Delivery from "../components/Delivery"
 import Modal from "../components/Modal"
 import { useLocation } from "react-router-dom"
+import { useState } from "react"
 
 const Cart = () => {
 
+  
+  let init = JSON.parse(localStorage.getItem(actualProducts))
+  console.log(init);
+  const [actualProducts, setActualProducts] = useState(init)
+
+  
+
   const location = useLocation()
+
+  setActualProducts(actualProducts => actualProducts.push({
+    title: location.state.title,
+    quantity: location.state.quantity.quantity,
+    price: location.state.price,
+    cost: location.state.cost,
+  }))
+
+
+
+  // let arrayProducts = JSON.parse(localStorage.getItem(arrayProducts));
+
+  ///
+  // let arrayProducts = []
+  // arrayProducts.push(
+  //   {
+  //     title: location.state.title,
+  //     quantity: location.state.quantity.quantity,
+  //     price: location.state.price,
+  //     cost: location.state.cost,
+  //   }
+  // )
+  ///
+
+  //exp
  
 
-  const arrayProducts = [
-    {
-      title: "testTitle",
-      quantity: 6,
-      price: 111,
-      cost: 666
-    },
-  ]
-
-  const addProduct = () => {
-    arrayProducts.push(
-      {
-        title: location.state.title,
-        quantity: location.state.quantity.quantity,
-        price: location.state.price,
-        cost: location.state.cost,
-      }
-    )
-    
-  }
-
  
+  
+  
+  
+
+  // localStorage.setItem(actualProducts, JSON.stringify(actualProducts));
+
+
+  //exp
+
+
+
+
+  // localStorage.setItem(arrayProducts, JSON.stringify(arrayProducts));
+
+  // localStorage.setItem()
+
   const renderLine = () => {
-    addProduct()
-    return arrayProducts.map((el) => {
-      return (
-        <div className="cart__row">
-          <div className="cart__item">{el.title}</div>
-          <div className="cart__item">{el.quantity}</div>
-          <div className="cart__item">{el.price}</div>
-          <div className="cart__item">{el.cost}</div>
-        </div>
-      )
-    }
+    // return JSON.parse(localStorage.getItem(arrayProducts)).map((el) => {
+    //   return (
+    //     <div className="cart__row">
+    //       <div className="cart__item">{el.title}</div>
+    //       <div className="cart__item">{el.quantity}</div>
+    //       <div className="cart__item">{el.price}</div>
+    //       <div className="cart__item">{el.cost}</div>
+    //     </div>
+    //   )
+    // }
      
-    )
+    // )
   }
 
   // Add to localStorage!!!!!!!
-  
+
   //localStorage.setItem('bgcolor', 'red');
 
   // CLEAR localStorage!!!!!!!
