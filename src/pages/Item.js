@@ -1,14 +1,14 @@
 import Header from "../components/Header"
 import { Link } from "react-router-dom"
 import { useLocation } from "react-router-dom"
-import { useState, useRef } from "react"
+import { useState } from "react"
 
 const Item = () => {
   
   const location = useLocation()
-  
-
   const itemTitle = location.state.title.title
+  const id = location.state.id.id
+
   const [price, setPrice] = useState(location.state.price_grande.priceBig)
   const [quantity, setQuantity] = useState(1)
 
@@ -30,55 +30,62 @@ const Item = () => {
   //total cost
   const renderCost = () => price * quantity
 
-  //a function that send quantity and cost to /Header/HeaderCart
-  // const sendToHeaderCart = () => {
-    
-  //   const res = {
-  //     quantity: 666,
-  //     cost: 666,
-  //   }
-  
-  //   return res
-  // }
-  
+  //HeaderCart, localStorage moderation
 
   const addToCart = () => {
+
+    setQuantity(1)
     
-    //addition of a chosen product to local storage
+    
+    //addition of a chosen object to local storage
     const addCartItem = {
       title: itemTitle,
       quantity: {quantity},
       price: renderPrice(),
       cost: renderCost(),
+      id: id
     }
+    console.log(addCartItem.id);
     const getCartItems = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
     getCartItems.push(addCartItem)
     localStorage.setItem("cartItems", JSON.stringify(getCartItems))
     //
 
-    // call newCostValue
-    setValue(newCostValue())
+    // send new value of cost to HeaderCart
+    setCost(newCostValue())
+    setQty(newQtyValue())
   }
-  
+
   const newCostValue = () => {
     const newCosts = JSON.parse(localStorage.getItem("cartItems"))  
-    function calc(arr) {
-      let res = 0
-      for ( let i = 0; i < arr.length; i++) res += arr[i].cost
-      return res 
+    function calcCost(arr) {
+      let resCost = 0
+      for ( let i = 0; i < arr.length; i++) resCost += arr[i].cost
+      return resCost 
     }
-    return calc(newCosts) 
+    return calcCost(newCosts)
   }
+
+  const newQtyValue = () => {
+    const newCosts = JSON.parse(localStorage.getItem("cartItems"))  
+    function calcQty(arr) {
+      let resQty = 0
+      for ( let i = 0; i < arr.length; i++) resQty += arr[i].quantity.quantity
+      return resQty 
+    }
+    return calcQty(newCosts) 
+  }
+
+  const [cost, setCost] = useState(localStorage.getItem("cartItems") ? newCostValue() : 0)
+  const [qty, setQty] = useState(localStorage.getItem("cartItems") ? newQtyValue() : 0)
+
   
-  const [value, setValue] =useState(localStorage.getItem("cartItems") ? newCostValue() : 0)
-  
-  console.log(value);
 
   return (
     <div className="item">
       <Header 
-        value={value}
-        setValue={setValue}
+        cost={cost}
+        qty={qty}
       />
       <div className="container">
         <div className="item__image">
@@ -118,13 +125,6 @@ const Item = () => {
         <button 
           className="item__btn btn"
           onClick={addToCart}
-          // to="./../Cart"
-          // state={{
-          //   title: itemTitle,
-          //   quantity: {quantity},
-          //   price: renderPrice(),
-          //   cost: renderCost(),
-          // }}
         >
           Adicionar a cesta
         </button> 

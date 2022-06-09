@@ -23,10 +23,6 @@ const Delivery = () => {
           </div>
   
         </div>
-
-    
-      
-
     </div>
   )
 }

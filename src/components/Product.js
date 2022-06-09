@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom"
 
-const Product = ({title, alt, descr, priceBig, priceCombo, img}) => {
+const Product = ({title, alt, descr, priceBig, priceCombo, img, id}) => {
 
   return (
     <div className="product">
@@ -21,7 +21,7 @@ const Product = ({title, alt, descr, priceBig, priceCombo, img}) => {
             shipment_time: 0,
             price_grande: {priceBig},
             price_combo: {priceCombo},
-            id: 0
+            id: {id}
           }}
         >
           Mais
