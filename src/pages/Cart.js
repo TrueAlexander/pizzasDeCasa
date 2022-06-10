@@ -54,13 +54,13 @@ const Cart = () => {
       </div>
       <Link className="cart__btn btn" to={"/Home"}>Voltar ao Menu</Link>
       <button className="cart__btn btn" >Pagar</button>
-      <Link 
+      <button 
         className="cart__btn btn"
         onClick={clearCart}
-        to={"/Home"}
+        
       >
         Vaziar a cesta
-      </Link>
+      </button>
       <Modal/>
     </div>
   )

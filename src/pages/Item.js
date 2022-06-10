@@ -24,7 +24,7 @@ const Item = () => {
   const renderPrice = () => price
 
   //items quantity set  
-  const decreaseQuantity = () => setQuantity(quantity => quantity > 0 ? quantity - 1 : quantity)
+  const decreaseQuantity = () => setQuantity(quantity => quantity > 1 ? quantity - 1 : quantity)
   const addQuantity = () => setQuantity(quantity => quantity < 5 ? (quantity + 1) : quantity)
 
   //total cost
@@ -45,11 +45,16 @@ const Item = () => {
       cost: renderCost(),
       id: id
     }
-    console.log(addCartItem.id);
+    
     const getCartItems = localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")) : []
     getCartItems.push(addCartItem)
     localStorage.setItem("cartItems", JSON.stringify(getCartItems))
     //
+    //
+   
+    const getCurrentItems = localStorage.getItem(itemTitle.toString()) ? JSON.parse(localStorage.getItem(itemTitle.toString())) : []
+    getCurrentItems.push(addCartItem)
+    localStorage.setItem(itemTitle.toString(), JSON.stringify(getCurrentItems))
 
     // send new value of cost to HeaderCart
     setCost(newCostValue())
