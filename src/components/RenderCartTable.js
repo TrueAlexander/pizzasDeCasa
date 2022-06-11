@@ -15,8 +15,6 @@ const RenderCartTable = () => {
     return res
   }
   let resArr = storageArr()
-
-  console.log(resArr);
   
   let splitted = []
   const splitArr = (resArr) => resArr.forEach((el) => {
@@ -31,13 +29,13 @@ const RenderCartTable = () => {
         price: el[0].price,
         id: el[0].id
       }
-    console.log(res)
+   
     splitted.push(res)
    return res
   })
 
   splitArr(resArr)
-  console.log(splitted)
+
   
   let totalQ = 0
   const countTotalQ = () => {
@@ -51,25 +49,45 @@ const RenderCartTable = () => {
     return totalValor
   }
 
+  const excluir = (event) => {
+
+    const clickedProduct = event.target.parentNode.parentNode
+    clickedProduct.remove()
+    const clickedProductTitle = clickedProduct.textContent.slice(0, clickedProduct.textContent.length - 15)
+    localStorage.removeItem(clickedProductTitle);
+    
+    let cartItemsArr = JSON.parse(localStorage.getItem("cartItems"))
+
+    let newCartItemsArr = cartItemsArr.filter(e => e.title !== clickedProductTitle)
+    console.log(newCartItemsArr);
+
+    // cartItemsArr !== [] ? console.log('still') : console.log('nothing')
+    if (newCartItemsArr.length < 1) {
+      localStorage.clear()
+      window.location.reload()
+    } else {
+      localStorage.setItem("cartItems", JSON.stringify(newCartItemsArr))
+    }
+    //////// change total quantity
+    /////// change total Valor
+  }
   
     
   
 //  ////// 
   const renderLine = () => {
 
-    return storageCart ? splitted.map((el) => {
+    return localStorage.getItem("cartItems") ? splitted.map((el) => {
       
-      return (
-        <div className="cart__row" key={el.id}>
-          <div className="cart__item">{el.name}</div>
-          <div className="cart__item">{el.quantity}</div>
-          <div className="cart__item">{el.price}</div>
-          <div className="cart__item">{el.quantity * el.price}</div>
-        </div>
-      )
-      
-    } 
-     
+        return (
+          <div className="cart__row" key={el.id}>
+            <div className="cart__item">{el.name} <button onClick={excluir} className="btn btn_small">excluir</button></div>
+            <div className="cart__item">{el.quantity}</div>
+            <div className="cart__item">{el.price}</div>
+            <div className="cart__item">{el.quantity * el.price}</div>
+          </div>
+        )   
+      }    
     ) : <div className="cart__empty" key="empty">Sua Cesta está vazia</div>
   }
 

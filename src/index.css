@@ -16,6 +16,7 @@ body {
 }
 
 .btn {
+  color: #5e0303;
   border: none;
   padding: 7px 15px;
   background: linear-gradient(180deg, #f59292, #f4c51cae);
@@ -30,7 +31,24 @@ body {
 .btn:hover {
   box-shadow: 0 0 2px;
   transform: scale(1.02);
+  background: linear-gradient(0deg, #f59292, #f4c51cae);
   transition: all 0.1s ease;
+}
+
+.btn:active {
+  /* box-shadow: 0 0 2px;
+  transform: scale(1.02); */
+  background: rgb(99, 97, 97);
+  color: white;
+  transition: all 0.1s ease;
+}
+
+.btn_small {
+  padding: 4px 5px;
+  font-size: 0.8em;
+  font-weight: 700;
+  margin-left: 50px;
+  
 }
 
 .description {

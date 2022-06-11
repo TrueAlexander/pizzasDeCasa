@@ -49,8 +49,8 @@ const Cart = () => {
         <h2>Sua Cesta</h2>      
         <RenderCartTable/>
         <Delivery />
-        <h3>Total to pay:</h3>
-        <h2 className="cart__total">150 Rs</h2>
+        <h3>Total a pagar:</h3>
+        <h2 className="cart__total">{0} Rs</h2>
       </div>
       <Link className="cart__btn btn" to={"/Home"}>Voltar ao Menu</Link>
       <button className="cart__btn btn" >Pagar</button>
