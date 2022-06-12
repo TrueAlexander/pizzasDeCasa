@@ -22,7 +22,9 @@ const RenderCartTable = (props) => {
       }
     })
     return arrToRender
+    
   }
+  
 
   const [arrToRender, setArrToRenderArr] = useState(getNewArrToRender())
 
@@ -36,13 +38,20 @@ const RenderCartTable = (props) => {
   
   let totalValor = 0
   const countTotalValor = () => {
-    for (let item in arrToRender) totalValor += arrToRender[item].price * arrToRender[item].quantity
+    for (let item in arrToRender) {
+      totalValor += arrToRender[item].price * arrToRender[item].quantity
+      
+    }
+    
     return totalValor
   }
   let valorToCart = countTotalValor() 
   let qToCart = countTotalQ()
 
-  props.func(valorToCart)
+  props.changeTotalCost(valorToCart)
+
+  
+  
 
   const excluir = (event) => {
 
@@ -53,7 +62,8 @@ const RenderCartTable = (props) => {
     localStorage.removeItem(clickedProductTitle)
 
     setArrToRenderArr(getNewArrToRender())
-
+   
+    // props.changeTotalCost(totalValor)
     
     //2 eliminate excluded products from setItems 
 
@@ -62,9 +72,14 @@ const RenderCartTable = (props) => {
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItemsArr))
     //
 
-    if (localStorage.length < 2) localStorage.clear()
+    if (localStorage.length < 2) {
+      localStorage.clear()
+      props.changeTotalCost(0)
+    }
+    
+    
   }
-
+ 
   const renderLine = () => {
     
     return localStorage.getItem("cartItems") ? arrToRender.map((el) => {

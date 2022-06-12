@@ -32,17 +32,12 @@ const Cart = () => {
   
   const [cartQty, setCartQty] = useState(qty)
   const [cartCost, setCartCost] = useState(cost)
-  // const [total, setTotal] = useState(0)
-  // const [del, setDel] = useState(0)
-  let total = 0
-  let del = 0
-  
-  const getTotal = () => {
-    
-  }
-  const getDel = () => {
 
-  }
+  
+  const [del, setDel] = useState(0)
+  const [totalCost, setTotalCost] = useState(0)
+   
+ 
 
   const clearCart = () => {
     setCartQty(0)
@@ -52,14 +47,6 @@ const Cart = () => {
   }
   
   
-  const pull_products = (costProducts) => {
-    // setTotal(costProducts)  
-  }
-  
-  const pull_delivery = (deliveryCost) => {
-    // setDel(deliveryCost)
-  }
-
   return (
     <div className="cart">
       <Header
@@ -70,21 +57,20 @@ const Cart = () => {
       <div className="container">
         <h2>Sua Cesta</h2>      
         <RenderCartTable
-          func={pull_products}
-         
+          changeTotalCost={totalCost => setTotalCost(totalCost)}
         />
         <Delivery
-          func={pull_delivery}
+          changeDel={del => setDel(del)}
         />
         <h3>Total a pagar:</h3>
-        <h2 className="cart__total">{total + del} Rs</h2>
+        <h2 className="cart__total">{totalCost + del} Rs</h2>
       </div>
       <Link className="cart__btn btn" to={"/Home"}>Voltar ao Menu</Link>
-      <button className="cart__btn btn" disabled={total > 0 ? false : true} >Pagar</button>
+      <button className="cart__btn btn" disabled={totalCost > 0 ? false : true} >Pagar</button>
       <button 
         className="cart__btn btn"
         onClick={clearCart}
-        disabled={total > 0 ? false : true}
+        disabled={totalCost > 0 ? false : true}
       >
         Vaziar a cesta
       </button>

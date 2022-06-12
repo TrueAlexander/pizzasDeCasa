@@ -4,10 +4,16 @@ const Delivery = (props) => {
 
   const costOfDelivery = 50 
   const [deliveryCost, setDeliveryCost] = useState(0)
-  const deliverySetZero = () => setDeliveryCost(0) 
-  const deliverySetCost = () => setDeliveryCost(costOfDelivery)
+  const deliverySetZero = () => {
+    setDeliveryCost(0)
+    props.changeDel(0)
+  } 
+  const deliverySetCost = () => {
+    setDeliveryCost(costOfDelivery)
+    props.changeDel(costOfDelivery)
+  }
 
-  props.func(deliveryCost)
+  // props.func(deliveryCost)
 
   return (
     <div>
