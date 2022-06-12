@@ -1,97 +1,86 @@
+import { useState } from "react"
 
-
-const RenderCartTable = () => {
-
-
-  const storageCart = localStorage.getItem("cartItems")
-
-
-  let storageArr = () => {
-    let res = []
+const RenderCartTable = (props) => {
+  
+  const getNewArrToRender = () => {
+  
+    let arrItemsGrupped = []
     for (let i = 0; i < localStorage.length; i++) {
       if (localStorage.key(i) !== "cartItems")
-      res.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
+      arrItemsGrupped.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
     }
-    return res
-  }
-  let resArr = storageArr()
-  
-  let splitted = []
-  const splitArr = (resArr) => resArr.forEach((el) => {
 
-    let res = {}
-    let q = 0
-    for (let item in el) q += el[item].quantity.quantity;
-   
-    res = {
-        name: el[0].title,
+    let arrToRender = arrItemsGrupped.map((item) => {
+      let q = 0
+      for (let i in item) q += item[i].quantity.quantity;
+      return {
+        name: item[0].title,
         quantity: q,
-        price: el[0].price,
-        id: el[0].id
+        price: item[0].price,
+        id: item[0].id,
+        cost: q * item[0].price
       }
-   
-    splitted.push(res)
-   return res
-  })
+    })
+    return arrToRender
+  }
 
-  splitArr(resArr)
+  const [arrToRender, setArrToRenderArr] = useState(getNewArrToRender())
 
-  
+ 
+  /// count Total Q and Total Valor
   let totalQ = 0
   const countTotalQ = () => {
-    for (let item in splitted) totalQ += splitted[item].quantity;
+    for (let item in arrToRender) totalQ += arrToRender[item].quantity;
     return totalQ
   }
   
   let totalValor = 0
   const countTotalValor = () => {
-    for (let item in splitted) totalValor += splitted[item].price * splitted[item].quantity
+    for (let item in arrToRender) totalValor += arrToRender[item].price * arrToRender[item].quantity
     return totalValor
   }
+  let valorToCart = countTotalValor() 
+  let qToCart = countTotalQ()
+
+  props.func(valorToCart)
 
   const excluir = (event) => {
 
+    //1 eliminate excluded product from localStorage
+
     const clickedProduct = event.target.parentNode.parentNode
-    clickedProduct.remove()
     const clickedProductTitle = clickedProduct.textContent.slice(0, clickedProduct.textContent.length - 15)
-    localStorage.removeItem(clickedProductTitle);
+    localStorage.removeItem(clickedProductTitle)
+
+    setArrToRenderArr(getNewArrToRender())
+
     
-    let cartItemsArr = JSON.parse(localStorage.getItem("cartItems"))
+    //2 eliminate excluded products from setItems 
 
-    let newCartItemsArr = cartItemsArr.filter(e => e.title !== clickedProductTitle)
-    console.log(newCartItemsArr);
+    let currentCartItemsArr = JSON.parse(localStorage.getItem("cartItems"))
+    let updatedCartItemsArr = currentCartItemsArr.filter(e => e.title !== clickedProductTitle)
+    localStorage.setItem("cartItems", JSON.stringify(updatedCartItemsArr))
+    //
 
-    // cartItemsArr !== [] ? console.log('still') : console.log('nothing')
-    if (newCartItemsArr.length < 1) {
-      localStorage.clear()
-      window.location.reload()
-    } else {
-      localStorage.setItem("cartItems", JSON.stringify(newCartItemsArr))
-    }
-    //////// change total quantity
-    /////// change total Valor
+    if (localStorage.length < 2) localStorage.clear()
   }
-  
-    
-  
-//  ////// 
-  const renderLine = () => {
 
-    return localStorage.getItem("cartItems") ? splitted.map((el) => {
+  const renderLine = () => {
+    
+    return localStorage.getItem("cartItems") ? arrToRender.map((el) => {
       
         return (
           <div className="cart__row" key={el.id}>
             <div className="cart__item">{el.name} <button onClick={excluir} className="btn btn_small">excluir</button></div>
             <div className="cart__item">{el.quantity}</div>
             <div className="cart__item">{el.price}</div>
-            <div className="cart__item">{el.quantity * el.price}</div>
+            <div className="cart__item">{el.cost}</div>
           </div>
         )   
       }    
     ) : <div className="cart__empty" key="empty">Sua Cesta está vazia</div>
   }
-
-  
+ 
   return (
     <div className="cart__container">
       <div className="cart__row">
@@ -109,9 +98,9 @@ const RenderCartTable = () => {
       </div>  
       <div className="cart__row">
         <div className="cart__item">Total Valor</div>
-        <div className="cart__item">{countTotalQ()}</div>
+        <div className="cart__item">{totalQ}</div>
         <div className="cart__item"></div>
-        <div className="cart__item">{countTotalValor()}</div>
+        <div className="cart__item">{totalValor}</div>
       </div>          
     </div>
   )

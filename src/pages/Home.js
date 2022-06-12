@@ -38,7 +38,9 @@ const Home = () => {
     <div>
       <Header 
         qty={qty()} 
-        cost={cost()} />
+        cost={cost()}
+        visibility = {true}   
+      />
       <div className="home">
         <div className="container">
           <h2>Nossos produtos</h2>

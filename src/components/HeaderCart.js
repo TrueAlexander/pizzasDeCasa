@@ -3,12 +3,12 @@ import { Link } from "react-router-dom"
 import React from "react"
 
 
-const HeaderCart = ({cost, qty}) => {
+const HeaderCart = ({cost, qty, visibility}) => {
 
-  
   return (
-    <div className="headerCart">
-      
+    <div 
+      className={visibility === false ? "headerCart invisible" : "headerCart"} 
+    >   
       <Link 
         to="./../Cart"
       >

@@ -3,7 +3,7 @@ import pizza from "./../images/icons/pizza_icon.svg"
 import { Link } from "react-router-dom"
 
 
-const Header = ({cost, qty}) => {
+const Header = ({cost, qty, visibility}) => {
   
 
   
@@ -15,7 +15,8 @@ const Header = ({cost, qty}) => {
       <h1 className="header__name">Quiches Em Casa</h1>
       <HeaderCart 
         cost={cost} 
-        qty={qty} 
+        qty={qty}
+        visibility={visibility} 
       />
     </div>
   )

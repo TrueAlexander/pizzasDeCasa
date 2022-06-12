@@ -1,12 +1,13 @@
 import { useState } from "react"
 
-const Delivery = () => {
+const Delivery = (props) => {
 
   const costOfDelivery = 50 
   const [deliveryCost, setDeliveryCost] = useState(0)
   const deliverySetZero = () => setDeliveryCost(0) 
   const deliverySetCost = () => setDeliveryCost(costOfDelivery)
 
+  props.func(deliveryCost)
 
   return (
     <div>
@@ -23,7 +24,7 @@ const Delivery = () => {
             </div>
           </div>
           <div className="delivery__cost">
-            <span>Cost of delivery:  </span>
+            <span>Valor de entrega:  </span>
             <span>{deliveryCost} Rs</span>    
           </div>
   

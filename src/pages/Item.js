@@ -91,6 +91,7 @@ const Item = () => {
       <Header 
         cost={cost}
         qty={qty}
+        visibility = {true}
       />
       <div className="container">
         <div className="item__image">

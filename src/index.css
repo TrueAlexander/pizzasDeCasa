@@ -28,6 +28,8 @@ body {
 
 }
 
+
+
 .btn:hover {
   box-shadow: 0 0 2px;
   transform: scale(1.02);
@@ -50,6 +52,23 @@ body {
   margin-left: 50px;
   
 }
+
+.btn:disabled{
+  opacity: 0.4;
+  border: 1px solid grey;
+}
+
+.btn:disabled:hover{
+  box-shadow: none;
+  transform: none;
+  background: linear-gradient(180deg, #f59292, #f4c51cae);
+}
+
+.btn:disabled:active{
+  color: #5e0303;
+}
+
+
 
 .description {
   line-height: 1.3em;
@@ -81,6 +100,7 @@ a {
   text-shadow: 0 0 2px black, 0 0 5px #5e0303, 0 0 3px #5e0303;
   border: 1px solid #5e0303;
   box-shadow: 0 0 5px #5e0303;
+  color: white;
 }
 
 .initial__title {
@@ -127,8 +147,11 @@ a {
   height: 80px;
   overflow: hidden;
   transition: all 0.3s linear 0.1s;
-  font-weight: 600;
-  
+  font-weight: 600; 
+}
+
+.headerCart.invisible {
+  visibility: hidden;
 }
 
 .headerCart a {
