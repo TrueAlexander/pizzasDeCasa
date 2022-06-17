@@ -1,7 +1,9 @@
 import { useState } from "react"
 
 const RenderCartTable = (props) => {
-  
+ 
+  props.clearCart()
+  //get Array for Rending
   const getNewArrToRender = () => {
   
     let arrItemsGrupped = []
@@ -9,7 +11,6 @@ const RenderCartTable = (props) => {
       if (localStorage.key(i) !== "cartItems")
       arrItemsGrupped.push(JSON.parse(localStorage.getItem(localStorage.key(i))))
     }
-
     let arrToRender = arrItemsGrupped.map((item) => {
       let q = 0
       for (let i in item) q += item[i].quantity.quantity;
@@ -21,11 +22,9 @@ const RenderCartTable = (props) => {
         cost: q * item[0].price
       }
     })
-    return arrToRender
-    
+    return arrToRender  
   }
   
-
   const [arrToRender, setArrToRenderArr] = useState(getNewArrToRender())
 
  
@@ -41,17 +40,20 @@ const RenderCartTable = (props) => {
     for (let item in arrToRender) {
       totalValor += arrToRender[item].price * arrToRender[item].quantity
       
-    }
-    
+    } 
     return totalValor
   }
   let valorToCart = countTotalValor() 
   let qToCart = countTotalQ()
+////////////////////////////////////////////////////
+  // props.renderedCost(() => totalValor)
+  const functionHandler = (data) => {
 
-  props.changeTotalCost(valorToCart)
+      props.passChildData(data);
 
-  
-  
+}
+
+functionHandler(totalValor)
 
   const excluir = (event) => {
 
@@ -62,8 +64,8 @@ const RenderCartTable = (props) => {
     localStorage.removeItem(clickedProductTitle)
 
     setArrToRenderArr(getNewArrToRender())
-   
-    // props.changeTotalCost(totalValor)
+    
+    // props.renderedCost(() => valorToCart)
     
     //2 eliminate excluded products from setItems 
 
@@ -74,11 +76,11 @@ const RenderCartTable = (props) => {
 
     if (localStorage.length < 2) {
       localStorage.clear()
-      props.changeTotalCost(0)
+     
+      // props.changeTotalCost(() => 0)
     }
-    
-    
   }
+
  
   const renderLine = () => {
     
@@ -95,7 +97,7 @@ const RenderCartTable = (props) => {
       }    
     ) : <div className="cart__empty" key="empty">Sua Cesta está vazia</div>
   }
- 
+  
   return (
     <div className="cart__container">
       <div className="cart__row">
@@ -113,12 +115,17 @@ const RenderCartTable = (props) => {
       </div>  
       <div className="cart__row">
         <div className="cart__item">Total Valor</div>
-        <div className="cart__item">{totalQ}</div>
+        <div className="cart__item">
+          {localStorage.length > 1 ? totalQ : 0}
+        </div>
         <div className="cart__item"></div>
-        <div className="cart__item">{totalValor}</div>
+        <div className="cart__item">
+          {localStorage.length > 1 ? totalValor : 0}
+        </div>
       </div>          
     </div>
   )
+  
 }
 
 export default RenderCartTable

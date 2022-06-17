@@ -7,70 +7,44 @@ import { useState } from "react"
 
 const Cart = () => {
 
-  const storageCart = localStorage.getItem("cartItems")
-
-  //HeaderCart
-  const cost = () => {
-    const newCosts = JSON.parse(storageCart)  
-    function calcCost(arr) {
-      let resCost = 0
-      for ( let i = 0; i < arr.length; i++) resCost += arr[i].cost
-      return resCost 
-    }
-    return storageCart ? calcCost(newCosts) : 0
-  }
-
-  const qty = () => {
-    const newCosts = JSON.parse(storageCart)  
-    function calcQty(arr) {
-      let resQty = 0
-      for ( let i = 0; i < arr.length; i++) resQty += arr[i].quantity.quantity
-      return resQty 
-    }
-    return storageCart ? calcQty(newCosts) : 0
-  }
-  
-  const [cartQty, setCartQty] = useState(qty)
-  const [cartCost, setCartCost] = useState(cost)
-
-  
   const [del, setDel] = useState(0)
-  const [totalCost, setTotalCost] = useState(0)
-   
- 
+  const [childData, setChildData] = useState("")
+  const [vaziar, setVaziar] = useState(false)
 
   const clearCart = () => {
-    setCartQty(0)
-    setCartCost(0)
-    localStorage.clear()
-    window.location.reload()  
+    if(vaziar) localStorage.clear()
+  }
+
+  const clickHandler = () => {
+    setVaziar(true)
   }
   
   
   return (
     <div className="cart">
       <Header
-        qty = {cartQty}
-        cost = {cartCost}
+        qty = {0}
+        cost = {0}
         visibility = {false}  
       />
       <div className="container">
         <h2>Sua Cesta</h2>      
         <RenderCartTable
-          changeTotalCost={totalCost => setTotalCost(totalCost)}
+          passChildData={setChildData}
+          clearCart={clearCart}       
         />
         <Delivery
           changeDel={del => setDel(del)}
         />
         <h3>Total a pagar:</h3>
-        <h2 className="cart__total">{totalCost + del} Rs</h2>
+        <h2 className="cart__total">{vaziar ? 0 : childData + del} Rs</h2>
       </div>
       <Link className="cart__btn btn" to={"/Home"}>Voltar ao Menu</Link>
-      <button className="cart__btn btn" disabled={totalCost > 0 ? false : true} >Pagar</button>
+      <button className="cart__btn btn" disabled={!vaziar ? false : true} >Pagar</button>
       <button 
         className="cart__btn btn"
-        onClick={clearCart}
-        disabled={totalCost > 0 ? false : true}
+        onClick={clickHandler}
+        disabled={!vaziar ? false : true}
       >
         Vaziar a cesta
       </button>
