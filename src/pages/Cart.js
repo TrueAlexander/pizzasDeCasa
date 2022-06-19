@@ -1,15 +1,17 @@
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
 import Header from "../components/Header"
 import Delivery from "../components/Delivery"
 import RenderCartTable from "../components/RenderCartTable"
-import Modal from "../components/Modal"
 import { useState } from "react"
 
 const Cart = () => {
 
+  const navigate = useNavigate()
+  
   const [del, setDel] = useState(0)
   const [childData, setChildData] = useState("")
-  const [vaziar, setVaziar] = useState(false)
+  const [arrToRender, setArrToRender] = useState("")
+  const [vaziar, setVaziar] = useState(localStorage.length > 0 ? false : true)
 
   const clearCart = () => {
     if(vaziar) localStorage.clear()
@@ -18,8 +20,17 @@ const Cart = () => {
   const clickHandler = () => {
     setVaziar(true)
   }
-  
-  
+
+  const clickPayment = () => {
+    
+    navigate("/Payment", {
+      state: {
+        purchase: arrToRender,
+        delivery: del
+      }
+    })
+  }
+
   return (
     <div className="cart">
       <Header
@@ -31,7 +42,8 @@ const Cart = () => {
         <h2>Sua Cesta</h2>      
         <RenderCartTable
           passChildData={setChildData}
-          clearCart={clearCart}       
+          clearCart={clearCart}
+          passArrToRender={setArrToRender}      
         />
         <Delivery
           changeDel={del => setDel(del)}
@@ -40,15 +52,20 @@ const Cart = () => {
         <h2 className="cart__total">{vaziar ? 0 : childData + del} Rs</h2>
       </div>
       <Link className="cart__btn btn" to={"/Home"}>Voltar ao Menu</Link>
-      <button className="cart__btn btn" disabled={!vaziar ? false : true} >Pagar</button>
+      <button 
+        className="cart__btn btn" 
+        disabled={vaziar || localStorage.length === 0 ? true : false}
+        onClick={clickPayment} 
+      >
+        Pagar
+      </button>
       <button 
         className="cart__btn btn"
         onClick={clickHandler}
-        disabled={!vaziar ? false : true}
+        disabled={vaziar || localStorage.length === 0 ? true : false}
       >
         Vaziar a cesta
       </button>
-      <Modal/>
     </div>
   )
 }

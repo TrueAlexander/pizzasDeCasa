@@ -48,12 +48,13 @@ const RenderCartTable = (props) => {
 ////////////////////////////////////////////////////
   // props.renderedCost(() => totalValor)
   const functionHandler = (data) => {
-
-      props.passChildData(data);
-
-}
-
-functionHandler(totalValor)
+    props.passChildData(data);
+  }
+  functionHandler(totalValor)
+  const functionHandler1 = (arr) => {
+    props.passArrToRender(arr)
+  }
+  functionHandler1(arrToRender)
 
   const excluir = (event) => {
 
@@ -65,8 +66,6 @@ functionHandler(totalValor)
 
     setArrToRenderArr(getNewArrToRender())
     
-    // props.renderedCost(() => valorToCart)
-    
     //2 eliminate excluded products from setItems 
 
     let currentCartItemsArr = JSON.parse(localStorage.getItem("cartItems"))
@@ -76,8 +75,6 @@ functionHandler(totalValor)
 
     if (localStorage.length < 2) {
       localStorage.clear()
-     
-      // props.changeTotalCost(() => 0)
     }
   }
 

@@ -3,6 +3,8 @@ import Home from "./pages/Home"
 import Item from "./pages/Item"
 import Cart from "./pages/Cart"
 import Initial from "./pages/Initial"
+import Payment from "./pages/Payment"
+import Pix from "./pages/Pix"
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
           <Route path="/Home" element={<Home/>} />
           <Route path="/Item" element={<Item/>} />
           <Route path="/Cart" element={<Cart/>} />
+          <Route path="/Payment" element={<Payment/>} />
+          <Route path="/Pix" element={<Pix/>} />
         </Routes>
       </BrowserRouter>
     </div>

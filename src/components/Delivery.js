@@ -22,11 +22,11 @@ const Delivery = (props) => {
           <div className="delivery__options">
             <div className="delivery__input">
               <label htmlFor="delivery1">Retirar de Quiches em Casa (endereço...)</label>
-              <input onChange={deliverySetZero} type="radio" name="optionsDelivery" value="1" defaultChecked={true} />  
+              <input onChange={deliverySetZero} type="radio" name="optionsDelivery" value="1" checked={deliveryCost === 0} />  
             </div>
             <div className="delivery__input">
               <label htmlFor="delivery2">Entrega no Rio de Janeiro. Consulta o CEP</label>
-              <input onChange={deliverySetCost} type="radio" name="optionsDelivery" value="2" />
+              <input onChange={deliverySetCost} type="radio" name="optionsDelivery" value="2" checked={deliveryCost !== 0}/>
             </div>
           </div>
           <div className="delivery__cost">
