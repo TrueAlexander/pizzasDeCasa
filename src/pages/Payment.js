@@ -13,20 +13,19 @@ const Payment = () => {
 
   return (
     <>
-       <Header
+      <Header
           cost={0}
           qty={0}
           visibility={false}
-        />
-        <PurchaseForm
-          data={location.state}
-        />
-        <Link
-          to="/Cart"
-          className="btn"
-        >Voltar a cesta</Link>
-    </>
-   
+        />   
+      <PurchaseForm
+        data={location.state}
+      />
+      <Link
+        to="/Cart"
+        className="btn"
+      >Voltar a cesta</Link>
+    </>   
   )
 }
 

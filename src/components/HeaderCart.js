@@ -11,6 +11,7 @@ const HeaderCart = ({cost, qty, visibility}) => {
     >   
       <Link 
         to="./../Cart"
+        title="Ir a cesta"
       >
         <img className="headerCart__icon" src={cart} alt="cart" />
         <div className="headerCart__quantity">

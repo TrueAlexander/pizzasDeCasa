@@ -2,6 +2,9 @@ import PagSeguro from './PagSeguro'
 import {Link} from 'react-router-dom'
 import pixLogo from './../images/pix-logo.jpg'
 import { useState } from 'react'
+import PhoneInput from 'react-phone-number-input/input'
+
+
 
 const PurchaseForm = ({data}) => {
 
@@ -9,16 +12,7 @@ const PurchaseForm = ({data}) => {
 
   const [showMethods, setShowMethods] = useState(false)
 
-
-  const clickHandler = (event) => {
-    event.preventDefault()
-    
-    setShowMethods(true)
-    
-  }
-
-  console.log(showMethods);
-  
+ 
   const formfilled = () => {
     return (
       <>
@@ -40,26 +34,115 @@ const PurchaseForm = ({data}) => {
       
     )
   }
+  
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState()
 
+
+  const [inputDisabled, setInputDisabled] = useState(false)
+  const [buttonDisabled, setButtonDisabled] = useState(false)
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log(phone)
+     
+    if (phone.length === 14 && phone.includes('+5521')) {
+      setShowMethods(true)
+      const userData = {
+        name: name,
+        email: email,
+        phone: phone
+      }
+      console.log(userData)
+      setInputDisabled(true)
+      setButtonDisabled(true)
+
+    } else {
+      setShowMethods(false)
+      alert('Favor digite o numero de telefone com DDD de RJ, exemplo (21) 21212-2121')
+      setPhone()
+    }
+  }
+  
   return(
     <div className="purchase">
       <h2 className="purchase__title">Por favor preencher seus dados:</h2>
       <div className="purchase__form">
-        <form action="submit">
-          <input type="text" name="senderName" placeholder="nome" required />
-          <input type="email" name="senderEmail" placeholder="email" required/>
-          <input type="phone" name="senderPhone" placeholder="telefone" required/>
+        <form
+          onSubmit={handleSubmit}
+        >
+          <input 
+            type="text" 
+            name="senderName"
+            title="Seu nome"
+            placeholder="nome"
+            minLength="3"
+            required
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+            disabled={inputDisabled}
+          />
+          <input 
+            type="email"
+            title="exemplo@exemplo.com"
+            name="senderEmail" 
+            placeholder="email" 
+            required
+            autoComplete="off"
+            value={email}
+            disabled={inputDisabled}
+            onChange={(event) => setEmail(event.target.value)} 
+          />
+          <PhoneInput 
+            name="senderPhone" 
+            placeholder="telefone"
+            title="(21) 21212-2121"
+            maxLength="15"
+            minLength="15"
+            country="BR"
+            autoComplete="off"
+            value={phone}
+            onChange={setPhone}
+            type="tel"  
+            requiredfdg
+            disabled={inputDisabled}
+          />
+          
           {data.delivery !== 0 && 
             <>
-              <h3 className="purchase__subtitle">Endereço de Enrega:</h3> 
-              <input name="shippingAddressPostalCode" pattern="\d{5}[\-]?\d{3}" type="text" placeholder="CEP" required />
-              <input name="shippingAddressCity" type="text" placeholder="cidade" required  /> 
-              <input name="shippingAddressStreet" type="text" placeholder="rua" required />  
-              <input name="shippingAddressNumber" type="number" placeholder="número" required />  
+              <h3 className="purchase__subtitle">Endereço de Entrega:</h3> 
+              <input 
+                name="shippingAddressPostalCode" 
+                pattern="\d{5}[\-]?\d{3}" 
+                type="text" 
+                placeholder="CEP"
+                title="22222-222"
+                maxLength="9"
+                required 
+              />
+              <input 
+                name="shippingAddressCity" 
+                type="text" 
+                placeholder="cidade" 
+                required  
+              /> 
+              <input 
+                name="shippingAddressStreet" 
+                type="text" 
+                placeholder="rua" 
+                required 
+              />  
+              <input name="shippingAddressNumber" type="number" placeholder="número" 
+                required 
+              />  
               <input name="shippingAddressComplement" type="text" placeholder="complemento" />
             </>   
           }
-          <button className="btn" type="submit" onClick={clickHandler}>Pronto!</button>
+          <button 
+            className="btn" 
+            disabled={buttonDisabled}
+          >Pronto!</button>
         </form>
         {showMethods && formfilled()} 
       </div>
