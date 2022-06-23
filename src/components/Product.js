@@ -5,7 +5,7 @@ const Product = ({title, alt, descr, priceBig, priceCombo, img, id}) => {
   return (
     <div className="product">
         <div className="product__image">
-          <img src={img}  alt={alt} />
+          <img src={img}  alt={alt} title={title} />
         </div>
         <div className="product__title"><h3>{title}</h3></div>
         <div className="product__title"><h3>{priceBig} Rs</h3></div>
@@ -13,6 +13,7 @@ const Product = ({title, alt, descr, priceBig, priceCombo, img, id}) => {
         <Link 
           className="product__btn btn" 
           to="./../Item"
+          title="Abrir"
           state={{
             title: {title},
             img: {img},

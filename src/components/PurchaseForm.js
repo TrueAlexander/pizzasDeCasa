@@ -1,62 +1,51 @@
-import PagSeguro from './PagSeguro'
-import {Link} from 'react-router-dom'
-import pixLogo from './../images/pix-logo.jpg'
+// import PagSeguro from './PagSeguro'
+// import {Link} from 'react-router-dom'
 import { useState } from 'react'
 import PhoneInput from 'react-phone-number-input/input'
+import FormFilled from './FormFilled'
 
 
 
 const PurchaseForm = ({data}) => {
 
-  console.log(data.delivery);
-
-  const [showMethods, setShowMethods] = useState(false)
-
- 
-  const formfilled = () => {
-    return (
-      <>
-        <h3 className="purchase__subtitle">Escolhe o Metodo de Pagamento:</h3>
-        <div className="purchase__methods">
-          <div className="purchase__method">
-            <Link 
-              className='pix__btn' 
-              to="./../Pix"
-            >
-              <img src={pixLogo} alt=""  />  
-            </Link>
-          </div>
-          <div className="purchase__method">
-            <PagSeguro/>
-          </div>
-        </div>
-      </>
-      
-    )
-  }
-  
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState()
+  const [zipcode, setZipcode] = useState('')
+  const [city, setCity] = useState('')
+  const [street, setStreet] = useState('')
+  const [number, setNumber] = useState('')
+  const [complement, setComplement] = useState('')
 
-
+  const [showMethods, setShowMethods] = useState(false)
   const [inputDisabled, setInputDisabled] = useState(false)
   const [buttonDisabled, setButtonDisabled] = useState(false)
+  const [userData, setUserData] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log(phone)
-     
+    e.preventDefault()  
     if (phone.length === 14 && phone.includes('+5521')) {
       setShowMethods(true)
-      const userData = {
+
+      const buyerData = {
         name: name,
         email: email,
-        phone: phone
+        phone: phone,
+        zipcode: zipcode,
+        city: city,
+        street: street,
+        number: number,
+        complement: complement
       }
-      console.log(userData)
+      
       setInputDisabled(true)
       setButtonDisabled(true)
+      ////////////
+
+      setUserData(buyerData)
+      
+      // console.log(buyerData)
+     ////////////////
 
     } else {
       setShowMethods(false)
@@ -105,7 +94,7 @@ const PurchaseForm = ({data}) => {
             value={phone}
             onChange={setPhone}
             type="tel"  
-            requiredfdg
+            required
             disabled={inputDisabled}
           />
           
@@ -119,38 +108,62 @@ const PurchaseForm = ({data}) => {
                 placeholder="CEP"
                 title="22222-222"
                 maxLength="9"
-                required 
+                onChange={(event) => setZipcode(event.target.value)}
+                required
+                disabled={inputDisabled}
               />
               <input 
                 name="shippingAddressCity" 
                 type="text" 
                 placeholder="cidade" 
-                required  
+                required
+                minLength="3"
+                onChange={(event) => setCity(event.target.value)}
+                disabled={inputDisabled} 
               /> 
               <input 
                 name="shippingAddressStreet" 
                 type="text" 
-                placeholder="rua" 
-                required 
+                placeholder="rua"
+                minLength="5" 
+                required
+                onChange={(event) => setStreet(event.target.value)}
+                disabled={inputDisabled}
               />  
-              <input name="shippingAddressNumber" type="number" placeholder="número" 
-                required 
+              <input 
+                name="shippingAddressNumber" 
+                type="number"        
+                placeholder="número" 
+                required
+                onChange={(event) => setNumber(event.target.value)}
+                disabled={inputDisabled}
               />  
-              <input name="shippingAddressComplement" type="text" placeholder="complemento" />
+              <input 
+                name="shippingAddressComplement" 
+                type="text" placeholder="complemento"
+                onChange={(event) => setComplement(event.target.value)}
+                disabled={inputDisabled} 
+              />
             </>   
           }
           <button 
             className="btn" 
             disabled={buttonDisabled}
-          >Pronto!</button>
+            title="Pagar"
+          >
+            Pronto!
+          </button>
         </form>
-        {showMethods && formfilled()} 
+        {showMethods && <FormFilled data={userData} />}
       </div>
     </div>
   )
 }
 
 export default PurchaseForm
+
+// token 
+// 157e410e-55c1-4a13-9557-a2a5d8ab062cff8e065a4ca095d1766c2a78699499b8bc82-7b7c-41f7-add2-ab361ada238e
 
 // {/* <!-- Campos obrigatórios -->   */}
 // <input name="receiverEmail" type="hidden" value="suporte@lojamodelo.com.br" />  

@@ -2,6 +2,7 @@ import Header from "../components/Header"
 import { Link } from "react-router-dom"
 import { useLocation } from "react-router-dom"
 import { useState } from "react"
+import Modal from 'react-modal'
 
 const Item = () => {
   
@@ -35,6 +36,7 @@ const Item = () => {
   const addToCart = () => {
 
     setQuantity(1)
+    openModal()
     
     
     //addition of a chosen object to local storage
@@ -84,10 +86,43 @@ const Item = () => {
   const [cost, setCost] = useState(localStorage.getItem("cartItems") ? newCostValue() : 0)
   const [qty, setQty] = useState(localStorage.getItem("cartItems") ? newQtyValue() : 0)
 
+
+  ////////
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      height: '25vh',
+      width: '25%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: 'rgb(255, 218, 151)'
+    },
+  };
+
+  const [modalIsOpen, setIsOpen] = useState(false)
+
+  const openModal = () => setIsOpen(true)
+  const closeModal = () => setIsOpen(false)
   
 
   return (
     <div className="item">
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        ariaHideApp={false}
+        overlayClassName="Overlay"
+      >
+        <div className="modal">
+          <h2 className="modal__title">Bem feito! Adicionado á cesta!</h2>
+          <button className="btn modal__btn" onClick={closeModal}>Pronto!</button>       
+        </div> 
+      </Modal>
       <Header 
         cost={cost}
         qty={qty}
@@ -95,7 +130,7 @@ const Item = () => {
       />
       <div className="container">
         <div className="item__image">
-          <img src={location.state.img.img} alt={location.state.alt.alt} />
+          <img src={location.state.img.img} alt={location.state.alt.alt} title={itemTitle} />
         </div>
         <div className="item__title"><h2>{itemTitle}</h2></div>
         <div className="item__description description">{location.state.description.descr}</div>
