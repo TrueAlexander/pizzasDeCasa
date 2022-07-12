@@ -81,13 +81,23 @@ a {
   color: inherit;
 }
 
+select {
+  background-color: rgba(255, 255, 255, 0.745);
+  border-radius: 5px;
+  font-size: 15px;
+  border: 1px solid #5e03036e;
+  margin:  2px 0;
+  padding: 1px 10px;
+  color:#5e0303
+}
+
 /* ---Initial--- */
 
 .initial {
   height: 100vh;
-  background-image: url("./images/fundo_inicial.jpg");
+  background-image: url("./images/initial.jpg");
   background-position: center;
-  background-size: contain;
+  background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -487,6 +497,8 @@ a {
   padding: 1px 10px;
   color:#5e0303
 }
+
+
 
 .purchase__form form input::-webkit-outer-spin-button,
 .purchase__form form input::-webkit-inner-spin-button {

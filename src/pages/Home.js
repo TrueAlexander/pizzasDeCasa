@@ -43,7 +43,7 @@ const Home = () => {
       />
       <div className="home">
         <div className="container">
-          <h2>Nossos produtos</h2>
+          <h2>Nosso cardápio</h2>
           <div className="home__container">
             {<FillMenu/>}
           </div>

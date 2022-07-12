@@ -12,7 +12,7 @@ const Header = ({cost, qty, visibility}) => {
       <Link to="./../Home" className="header__logo" title="Voltar ao Menu">
         <img src={pizza} alt="pizza_logo"/>
       </Link>
-      <h1 className="header__name">Quiches Em Casa</h1>
+      <h1 className="header__name">Pizzas De Casa</h1>
       <HeaderCart 
         cost={cost} 
         qty={qty}

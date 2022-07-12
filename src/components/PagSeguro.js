@@ -7,8 +7,8 @@ const PagSeguro = (userData) => {
 
   return(
     <div className="purchase__form">
-      <form method="post" target="pagseguro" action="https://pagseguro.uol.com.br/v2/checkout/payment.html">  
-        <input name="receiverEmail" type="hidden" value="suporte@eformaliza.com" />
+      <form method="post" target="pagseguro" action="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html">  
+        <input name="receiverEmail" type="hidden" value="caminante.msk@gmail.com" />
         <input name="currency" type="hidden" value="BRL" />
         <input name="itemDescription1" type="hidden" value="4 Quejos" />
         <input name="itemAmount1" type="hidden" value="115" />

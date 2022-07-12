@@ -47,6 +47,7 @@ const Cart = () => {
         />
         <Delivery
           changeDel={del => setDel(del)}
+          vaziar={vaziar}
         />
         <h3>Total a pagar:</h3>
         <h2 className="cart__total">{vaziar ? 0 : childData + del} Rs</h2>

@@ -7,7 +7,7 @@ const Initial = () => {
 
   return (
     <div className="initial">
-      <h1 className="initial__title">QUICHES EM CASA</h1>
+      <h1 className="initial__title">PIZZAS DE CASA</h1>
       <Link className="btn" to="./Home" >Ir ao Menu!</Link>
     </div>
   )

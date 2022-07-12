@@ -137,11 +137,11 @@ const Item = () => {
         <div className="item__row">
           <div className="item__options">
             <div className="item__input">
-              <label htmlFor="1">Quiche grande 27 cm de diametro</label>
+              <label htmlFor="1">Pizza grande 27 cm de diametro</label>
               <input onChange={priceSetBig} type="radio" name="options" value="1" defaultChecked={true} />  
             </div>
             <div className="item__input">
-              <label htmlFor="2">Combo 6 quiches de 7 cm de diametro</label>
+              <label htmlFor="2">Combo 6 pizzas de 7 cm de diametro</label>
               <input onChange={priceSetCombo} type="radio" name="options" value="2" />
             </div>
           </div>
