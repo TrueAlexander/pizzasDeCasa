@@ -1,27 +1,44 @@
 import { Link } from 'react-router-dom'
-import PagSeguro from './PagSeguro'
 import pixLogo from './../images/pix-logo.jpg'
+import { useNavigate } from 'react-router-dom';
 
 
 
 const FormFilled = (userData) => {
 
+  const navigate = useNavigate()
+
+  console.log(userData);
+
+  const clickHandler = () => {
+  
+    navigate("./../Pix", {
+      state: {
+        name: userData.data.name,
+        phone: userData.data.phone,
+        email: userData.data.email,
+        ordenNumber: userData.data.ordenNumber,
+        address: '',
+        total: userData.data.orden[0].cost,
+        delivery: userData.data.orden[0].delivery
+
+      }
+    })
+  }
+
   return (
     <>
-      <h3 className="purchase__subtitle">Escolhe o Metodo de Pagamento:</h3>
+      <h3 className="purchase__subtitle">Atualmente o único metodo de pago disponivel é o PIX:</h3>
       <div className="purchase__methods">
         <div className="purchase__method">
-          <Link 
+          <button 
             className='pix__btn' 
-            to="./../Pix"
+            onClick={clickHandler}
+            title='Pagar com PIX'
+          
           >
             <img src={pixLogo} alt="pix" />  
-          </Link>
-        </div>
-        <div className="purchase__method">
-          <PagSeguro
-            data={userData}
-          />
+          </button>
         </div>
       </div>
     </>    

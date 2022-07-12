@@ -7,9 +7,8 @@ import PurchaseForm from "../components/PurchaseForm"
 const Payment = () => {
 
   const location = useLocation()
-  
-  //our array of purchase and a delivery cost
-  // console.dir(location.state)
+
+  console.log(location.state);
 
   return (
     <>
