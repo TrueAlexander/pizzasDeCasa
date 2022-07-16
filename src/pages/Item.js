@@ -99,7 +99,7 @@ const Item = () => {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      backgroundColor: 'rgb(255, 218, 151)'
+      backgroundColor: '#6d4d44'
     },
   };
 
