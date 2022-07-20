@@ -28,7 +28,8 @@ const Cart = () => {
       state: {
         purchase: arrToRender,
         delivery: del,
-        ordenNumber: ordenNumber
+        ordenNumber: ordenNumber,
+        total: childData + del
       }
     })
   }

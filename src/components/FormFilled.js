@@ -11,16 +11,20 @@ const FormFilled = (userData) => {
   console.log(userData);
 
   const clickHandler = () => {
-  
+    
+    
     navigate("./../Pix", {
       state: {
         name: userData.data.name,
         phone: userData.data.phone,
         email: userData.data.email,
         ordenNumber: userData.data.ordenNumber,
-        address: '',
-        total: userData.data.orden[0].cost,
-        delivery: userData.data.orden[0].delivery
+        purchase: userData.data.purchase,
+        zipcode: userData.data.zipcode,
+        address: userData.data.street + " " + userData.data.number + " " + userData.data.complement,
+        // total: userData.data.orden[0].cost,
+        delivery: userData.data.delivery,
+
 
       }
     })

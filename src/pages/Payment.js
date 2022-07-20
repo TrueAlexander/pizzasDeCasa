@@ -11,7 +11,7 @@ const Payment = () => {
   console.log(location.state);
 
   return (
-    <>
+    <div className="payment">
       <Header
           cost={0}
           qty={0}
@@ -24,7 +24,7 @@ const Payment = () => {
         to="/Cart"
         className="btn"
       >Voltar a cesta</Link>
-    </>   
+    </div>   
   )
 }
 

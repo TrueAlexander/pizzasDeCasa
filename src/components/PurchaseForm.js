@@ -24,10 +24,12 @@ const PurchaseForm = ({data}) => {
   const [userData, setUserData] = useState('')
 
   const handleSubmit = (e) => {
-    e.preventDefault()  
+    e.preventDefault() 
+    
+    console.log(data)
     if (phone.length === 14 && phone.includes('+5521')) {
       setShowMethods(true)
-
+      
       const buyerData = {
         name: name,
         email: email,
@@ -38,8 +40,9 @@ const PurchaseForm = ({data}) => {
         number: number,
         complement: complement,
         ordenNumber: data.ordenNumber,
-        deliver: data.delivery,
-        orden: data.purchase
+        delivery: data.delivery,
+        purchase: data.purchase,
+        total: data.total
       }
       
       setInputDisabled(true)
