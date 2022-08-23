@@ -162,7 +162,7 @@ const Item = () => {
              </div>
           </div>
         </div>
-        <Link className="item__btn btn" to="./../Home">Voltar ao Menu</Link> 
+        <Link className="item__btn btn" to="./../home">Voltar ao Menu</Link> 
         <button 
           className="item__btn btn"
           onClick={addToCart}

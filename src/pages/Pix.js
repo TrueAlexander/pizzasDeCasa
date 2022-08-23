@@ -29,7 +29,7 @@ const Pix = () => {
           <h2>A chave de PIX de Pizzas De Casa: </h2>
           <h3>777.777.77-77</h3>
           <Link
-            to="/Cart"
+            to="/cart"
             className="btn"
             >
               Voltar a cesta

@@ -13,7 +13,7 @@ const FormFilled = (userData) => {
   const clickHandler = () => {
     
     
-    navigate("./../Pix", {
+    navigate("./../pix", {
       state: {
         name: userData.data.name,
         phone: userData.data.phone,

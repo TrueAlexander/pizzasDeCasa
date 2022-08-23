@@ -21,7 +21,7 @@ const Payment = () => {
         data={location.state}
       />
       <Link
-        to="/Cart"
+        to="/cart"
         className="btn"
       >Voltar a cesta</Link>
     </div>   

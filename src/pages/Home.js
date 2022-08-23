@@ -1,6 +1,6 @@
 import Header from "../components/Header"
 import Product from "../components/Product"
-import dataProducts from "../dataProducts"
+import dataProducts from "../dataProducts.json"
 
 const Home = () => {
 

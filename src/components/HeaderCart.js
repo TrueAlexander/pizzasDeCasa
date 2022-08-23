@@ -10,7 +10,7 @@ const HeaderCart = ({cost, qty, visibility}) => {
       className={visibility === false ? "headerCart invisible" : "headerCart"} 
     >   
       <Link 
-        to="./../Cart"
+        to="./../cart"
         title="Ir a cesta"
       >
         <img className="headerCart__icon" src={cart} alt="cart" />

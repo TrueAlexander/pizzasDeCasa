@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
 const Product = ({title, alt, descr, priceBig, priceCombo, img, id}) => {
 
@@ -12,7 +12,7 @@ const Product = ({title, alt, descr, priceBig, priceCombo, img, id}) => {
         <div className="product__description description">{descr}</div>
         <Link 
           className="product__btn btn" 
-          to="./../Item"
+          to="./../item"
           title="Abrir"
           state={{
             title: {title},
