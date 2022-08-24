@@ -1,7 +1,16 @@
 import Header from "../components/Header"
-import FillMenu from "../components/FillMenu"
+import Product from "../components/Product"
+import dataProducts from "../dataProducts.json"
 
 const Home = () => {
+
+  const FillMenu = () => {
+    return dataProducts.map((el) => {
+        return (<div key={el.id} className="home__card">
+          <Product title={el.title} alt={el.alt} descr={el.description}  priceBig ={el.price_grande} priceCombo ={el.price_combo} img={el.img} id={el.id}/>
+        </div>)
+    })
+  }
 
   const cost = () => {
     const newCosts = JSON.parse(localStorage.getItem("cartItems"))  
@@ -23,11 +32,13 @@ const Home = () => {
     return localStorage.getItem("cartItems") ? calcQty(newCosts) : 0
   }
 
+  
+
   return (
     <div>
       <Header 
-        qty={0} 
-        cost={0}
+        qty={qty()} 
+        cost={cost()}
         visibility = {true}   
       />
       <div className="home">

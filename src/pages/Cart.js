@@ -24,7 +24,7 @@ const Cart = () => {
   const clickPayment = () => {
     const ordenNumber = Math.floor(Math.random()*1000000)
     
-    navigate("/Payment", {
+    navigate("/payment", {
       state: {
         purchase: arrToRender,
         delivery: del,
