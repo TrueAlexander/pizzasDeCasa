@@ -61,7 +61,8 @@ const Item = () => {
       const unit = {
           title: dataItem.title,
           price: price,
-          quantity: quantity
+          quantity: quantity,
+          cost: cost
       }
       // console.log(unit)
       dispatch(addItem(unit))

@@ -37,7 +37,7 @@ body {
 }
 
 .container {
-  padding: 130px 20px 40px;
+  padding: 110px 20px 40px;
 }
 
 .btn {
@@ -223,10 +223,10 @@ select {
   color: inherit;
 }
 
-.headerCart:hover {
+/* .headerCart:hover {
   transform: scale(1.1);
   transition: all 0.3s linear 0.1s
-}
+} */
 
 .headerCart__icon {
   width: 55%;
@@ -355,8 +355,8 @@ select {
 
 .item__image {
   max-width: 550px;
-  height: 350px;
-  background-color: #f4c51cae;
+  /* height: 350px; */
+
   border-radius: 5px;
   overflow: hidden;
   margin: 0 auto 10px;
