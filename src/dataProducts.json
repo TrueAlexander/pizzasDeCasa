@@ -3,7 +3,7 @@
     "title": "Margarita",
     "img": "assets/margarita.jpg",
     "alt": "margarita_image",
-    "description": "Pizza Margarita gostosinha. Pizza Margarita gostosinha. Pizza Margarita gostosinha. Pizza Margarita gostosinha. Pizza Margarita gostosinha. Pizza Margarita gostosinha. Pizza Margarita gostosinha. Pizza Margarita gostosinha. ",
+    "description": "Pizza Margarita gostosinha. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut neque natus in laborum nihil nostrum cumque officiis unde corrupti. Blanditiis, ut minima? Quod magnam laboriosam aliquam autem ex ratione architecto. ",
     "shipment_time": 24,
     "price_grande": 100,
     "price_combo": 110,
@@ -13,7 +13,7 @@
     "title": "Camarões",
     "img": "assets/shrimps.jpg",
     "alt": "camarões_image",
-    "description": "Pizza Camarões gostosinha. Pizza Camarões gostosinha.Pizza Camarões gostosinha.Pizza Camarões gostosinha.Pizza Camarões gostosinha.Pizza Camarões gostosinha.Pizza Camarões gostosinha.Pizza Camarões gostosinha.Pizza Camarões gostosinha.",
+    "description": "Pizza Camarões gostosinha. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iusto consequuntur nam provident accusantium cumque. Cum distinctio ipsum corrupti laboriosam reprehenderit, libero rem eius quod aut inventore delectus non dolores.",
     "shipment_time": 48,
     "price_grande": 120,
     "price_combo": 140,
@@ -23,10 +23,40 @@
     "title": "4 Quiejos",
     "img": "assets/4cheese.jpg",
     "alt": "4_quejos_image",
-    "description": "Pizza 4 Quiejos gostosinha. Pizza 4 Quiejos gostosinha. Pizza 4 Quiejos gostosinha. Pizza 4 Quiejos gostosinha. Pizza 4 Quiejos gostosinha. Pizza 4 Quiejos gostosinha. Pizza 4 Quiejos gostosinha. Pizza 4 Quiejos gostosinha. Pizza 4 Quiejos gostosinha. ",
+    "description": "Pizza 4 Quiejos gostosinha. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium aliquid delectus magnam, similique, voluptatum modi sit tempore odio ullam consectetur expedita atque porro numquam iusto, ea ex. Ex, officiis porro?",
     "shipment_time": 24,
     "price_grande": 115,
     "price_combo": 125,
     "id": 2
+  },
+  {
+    "title": "Caseira",
+    "img": "assets/margarita.jpg",
+    "alt": "margarita_image",
+    "description": "Pizza Margarita gostosinha. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Maxime libero repellat porro officia at molestiae laboriosam recusandae asperiores quam voluptatibus iure eos saepe, id dolor doloribus quisquam totam. Doloribus, quis. ",
+    "shipment_time": 24,
+    "price_grande": 100,
+    "price_combo": 110,
+    "id": 3
+  },
+  {
+    "title": "Pepperoni",
+    "img": "assets/shrimps.jpg",
+    "alt": "camarões_image",
+    "description": "Pizza Camarões gostosinha. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Amet expedita, tempora omnis architecto maxime voluptatibus sed quis sapiente nobis commodi vero suscipit ut repellendus excepturi libero non id beatae. Atque?",
+    "shipment_time": 48,
+    "price_grande": 120,
+    "price_combo": 140,
+    "id": 4
+  },
+  {
+    "title": "Frango",
+    "img": "assets/4cheese.jpg",
+    "alt": "4_quejos_image",
+    "description": "Pizza 4 Quiejos gostosinha. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsam sunt culpa perspiciatis ullam placeat delectus assumenda eligendi iure eos quaerat reiciendis quos exercitationem, enim, eveniet nulla dicta, corporis laudantium omnis? ",
+    "shipment_time": 24,
+    "price_grande": 115,
+    "price_combo": 125,
+    "id": 5
   }
 ]
