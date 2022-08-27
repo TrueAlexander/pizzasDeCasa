@@ -46,6 +46,7 @@ const Item = () => {
     const [price, setPrice] = useState(dataItem.priceBig)
     const [quantity, setQuantity] = useState(1)
     const [cost, setCost] = useState(price * quantity)
+    const [title, setTitle] = useState(dataItem.title)
 
 
     useEffect(() => {
@@ -59,7 +60,8 @@ const Item = () => {
     
       //addition of the chosen item to state(cartSlice)
       const unit = {
-          title: dataItem.title,
+          id: Math.floor(Math.random()*1000),
+          title: title,
           price: price,
           quantity: quantity,
           cost: cost
@@ -100,7 +102,7 @@ const Item = () => {
               <input 
                 onChange={() => {
                   setPrice(dataItem.priceBig)
-                  // setQuantity(1)
+                  setTitle(dataItem.title)
                 }} 
                 type="radio" 
                 name="options" 
@@ -112,7 +114,7 @@ const Item = () => {
               <input 
                 onChange={() => {
                   setPrice(dataItem.priceCombo)
-                  // setQuantity(1)
+                  setTitle(dataItem.title + " Combo")
                 }} 
                 type="radio" 
                 name="options" 
