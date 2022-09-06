@@ -1,6 +1,6 @@
 https://pizzas-de-casa-7ouhm9jg0-truealexander.vercel.app/
 
-in process
+changing the functionality to Redux-Toolkit
 
 # Getting Started with Create React App
 
