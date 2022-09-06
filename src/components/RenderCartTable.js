@@ -1,11 +1,13 @@
 import { useSelector, useDispatch } from "react-redux"
 import { removeItem } from "../features/cartSlice"
+import { useEffect } from "react"
 
 
-const RenderCartTable = () => {
+const RenderCartTable = ({setDisabled}) => {
   
   const dispatch = useDispatch()
   const arrToRender = useSelector((state) => state.cart.cart)
+  
 
   const totalQuantity = () => {
     let res = 0
@@ -26,8 +28,16 @@ const RenderCartTable = () => {
 
   const excluir = (event) => {
     const titleToRemove = event.target.parentNode.innerText.slice(0, -8)
-    dispatch(removeItem(titleToRemove))   
+    dispatch(removeItem(titleToRemove))    
   }
+
+  useEffect(() => {
+      if (arrToRender.length < 1) {
+      setDisabled(true) 
+    }
+    
+  }, [arrToRender])
+
 
   const renderLine = () => {
     

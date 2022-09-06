@@ -1,18 +1,14 @@
 import { useLocation, Link } from "react-router-dom"
 import Header from "../components/Header"
 import PurchaseForm from "../components/PurchaseForm"
-import { useDispatch } from "react-redux"
-import { removeDelivery } from "../features/deliverySlice"
 
 
 
 const Payment = () => {
 
-  const dispatch = useDispatch()
-  // const location = useLocation()
+  const location = useLocation()
 
-  // console.log(location.state);
-
+  console.log(location.state);
 
   return (
     <div className="payment">
@@ -22,13 +18,12 @@ const Payment = () => {
           visibility={false}
         />   
       <PurchaseForm
-        // data={location.state}
+        data={location.state}
       />
       <Link
-        to="/home"
-        onClick={() => dispatch(removeDelivery())}
+        to="/cart"
         className="btn"
-      >Voltar a Menu</Link>
+      >Voltar a cesta</Link>
     </div>   
   )
 }

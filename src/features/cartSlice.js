@@ -47,9 +47,11 @@ export const cartSlice = createSlice({
 
       state.cart = arrToRender  
     },
+
     removeItem: (state, action) => {
       state.cart = state.cart.filter((item) => item.title !== action.payload)
     },
+
     clearCart: (state, action) => {
       state.cart = []
     },

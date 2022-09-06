@@ -697,5 +697,6 @@ select {
 .pix__btn img {
   display: block;
   width: 100%;
+  cursor: pointer;
   
 }

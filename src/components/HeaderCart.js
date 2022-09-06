@@ -8,7 +8,7 @@ const HeaderCart = ({visibility}) => {
  //array from store
   const actualCart = useSelector((state) => state.cart.cart)
   //
-  console.log(actualCart)
+
 
   const sum = (arr) => {
     let quantity = 0

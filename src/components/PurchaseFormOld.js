@@ -1,12 +1,13 @@
+// import PagSeguro from './PagSeguro'
+// import {Link} from 'react-router-dom'
 import { useState } from 'react'
 import PhoneInput from 'react-phone-number-input/input'
 import FormFilled from './FormFilled'
-import { useSelector } from 'react-redux'
 
-const PurchaseForm = () => {
 
-  const deliveryCost = useSelector((state) => state.delivery.delivery)
-  console.log(deliveryCost)
+
+const PurchaseForm = ({data}) => {
+
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -25,23 +26,23 @@ const PurchaseForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault() 
     
-    
+    console.log(data)
     if (phone.length === 14 && phone.includes('+5521')) {
       setShowMethods(true)
       
       const buyerData = {
-        // name: name,
-        // email: email,
-        // phone: phone,
-        // zipcode: zipcode,
-        // city: city,
-        // street: street,
-        // number: number,
-        // complement: complement,
-        // ordenNumber: data.ordenNumber,
-        // delivery: data.delivery,
-        // purchase: data.purchase,
-        // total: data.total
+        name: name,
+        email: email,
+        phone: phone,
+        zipcode: zipcode,
+        city: city,
+        street: street,
+        number: number,
+        complement: complement,
+        ordenNumber: data.ordenNumber,
+        delivery: data.delivery,
+        purchase: data.purchase,
+        total: data.total
       }
       
       setInputDisabled(true)
@@ -102,8 +103,9 @@ const PurchaseForm = () => {
             type="tel"  
             required
             disabled={inputDisabled}
-          />          
-          {deliveryCost > 0 && 
+          />
+          
+          {data.delivery !== 0 && 
             <>
               <h3 className="purchase__subtitle">Endereço de Entrega:</h3> 
               <input 
@@ -159,9 +161,7 @@ const PurchaseForm = () => {
             Pronto!
           </button>
         </form>
-        {showMethods && <FormFilled 
-                          // data={userData} 
-                          />}
+        {showMethods && <FormFilled data={userData} />}
       </div>
     </div>
   )
