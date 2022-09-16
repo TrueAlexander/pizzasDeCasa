@@ -1,12 +1,20 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PhoneInput from 'react-phone-number-input/input'
 import FormFilled from './FormFilled'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const PurchaseForm = () => {
 
+  const navigate = useNavigate()
+
   const deliveryCost = useSelector((state) => state.delivery.delivery)
-  console.log(deliveryCost)
+  const actualCart = useSelector((state) => state.cart.cart)
+
+  //if the page is refreshed and the cart is cleared
+  useEffect(() => {
+    if (actualCart.length === 0) navigate("/home", { replace: true })
+  }, [])
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -30,28 +38,20 @@ const PurchaseForm = () => {
       setShowMethods(true)
       
       const buyerData = {
-        // name: name,
-        // email: email,
-        // phone: phone,
-        // zipcode: zipcode,
-        // city: city,
-        // street: street,
-        // number: number,
-        // complement: complement,
-        // ordenNumber: data.ordenNumber,
-        // delivery: data.delivery,
-        // purchase: data.purchase,
-        // total: data.total
+        name: name,
+        email: email,
+        phone: phone,
+        zipcode: zipcode,
+        city: city,
+        street: street,
+        number: number,
+        complement: complement,
+        ordenCode: Math.floor(Math.random() * 100000),
       }
       
       setInputDisabled(true)
       setButtonDisabled(true)
-      ////////////
-
       setUserData(buyerData)
-      
-      // console.log(buyerData)
-     ////////////////
 
     } else {
       setShowMethods(false)
@@ -159,9 +159,7 @@ const PurchaseForm = () => {
             Pronto!
           </button>
         </form>
-        {showMethods && <FormFilled 
-                          // data={userData} 
-                          />}
+        {showMethods && <FormFilled userData = {userData}/>}
       </div>
     </div>
   )

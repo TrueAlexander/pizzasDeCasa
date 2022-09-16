@@ -63,7 +63,6 @@ const Delivery = ({ disabled }) => {
             <span>Valor de entrega:  </span>
             <span>{disabled ? 0 : actualCost} Rs</span>    
           </div>
-  
       </div>
     </div>
   )

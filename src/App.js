@@ -5,10 +5,12 @@ import Cart from "./pages/Cart"
 import Initial from "./pages/Initial"
 import Payment from "./pages/Payment"
 import Pix from "./pages/Pix"
+import WhatsappIcon from "./components/WhatsappIcon"
 
 const App = () => {
   return (
     <div className="app">
+      <WhatsappIcon/>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Initial/>} />
@@ -20,7 +22,7 @@ const App = () => {
         </Routes>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
 export default App
