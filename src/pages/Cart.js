@@ -1,64 +1,64 @@
-import {Link, useNavigate} from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Header from "../components/Header"
 import Delivery from "../components/Delivery"
 import RenderCartTable from "../components/RenderCartTable"
 import { useState } from "react"
+import { clearCart } from "../features/cartSlice"
+import { useDispatch, useSelector } from "react-redux"
 
 const Cart = () => {
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
-  
-  const [del, setDel] = useState(0)
-  const [childData, setChildData] = useState("")
-  const [arrToRender, setArrToRender] = useState("")
-  const [vaziar, setVaziar] = useState(localStorage.length > 0 ? false : true)
-
-  const clearCart = () => {
-    if(vaziar) localStorage.clear()
+  const actualCart = useSelector((state) => state.cart.cart)
+  const deliveryCost = useSelector((state) => state.delivery.delivery)
+  const totalCost = () => {
+    let res = 0
+    for(let item of actualCart) {
+      res += item.cost
+    }
+    return res
   }
 
+
+  const [disabled, setDisabled] = useState(actualCart.length > 0 ? false : true)
+
   const clickHandler = () => {
-    setVaziar(true)
+    setDisabled(true)
+    dispatch(clearCart())
   }
 
   const clickPayment = () => {
-    const ordenNumber = Math.floor(Math.random()*1000000)
-    
-    navigate("/Payment", {
+  
+    // const ordenNumber = Math.floor(Math.random()*1000000)
+    navigate("/payment", {
       state: {
-        purchase: arrToRender,
-        delivery: del,
-        ordenNumber: ordenNumber,
-        total: childData + del
+        // purchase: arrToRender,
+        // delivery: del,
+        // ordenNumber: ordenNumber,
+        // total: childData + del
       }
     })
   }
 
+ 
   return (
     <div className="cart">
       <Header
-        qty = {0}
-        cost = {0}
         visibility = {false}  
       />
       <div className="container">
         <h2>Sua Cesta</h2>      
-        <RenderCartTable
-          passChildData={setChildData}
-          clearCart={clearCart}
-          passArrToRender={setArrToRender}      
-        />
-        <Delivery
-          changeDel={del => setDel(del)}
-          vaziar={vaziar}
-        />
+        <RenderCartTable setDisabled={setDisabled} />
+        <Delivery disabled={disabled} />
         <h3>Total a pagar:</h3>
-        <h2 className="cart__total">{vaziar ? 0 : childData + del} Rs</h2>
+        <h2 className="cart__total">
+          {deliveryCost + totalCost()} Rs</h2>
       </div>
-      <Link className="cart__btn btn" to={"/Home"}>Voltar ao Menu</Link>
+      <Link className="cart__btn btn" to="/home">Voltar ao Menu</Link>
       <button 
         className="cart__btn btn" 
-        disabled={vaziar || localStorage.length === 0 ? true : false}
+        disabled={disabled}
         onClick={clickPayment} 
       >
         Pagar
@@ -66,7 +66,7 @@ const Cart = () => {
       <button 
         className="cart__btn btn"
         onClick={clickHandler}
-        disabled={vaziar || localStorage.length === 0 ? true : false}
+        disabled={disabled}
       >
         Vaziar a cesta
       </button>

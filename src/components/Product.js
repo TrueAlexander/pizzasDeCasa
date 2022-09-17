@@ -18,10 +18,10 @@ const Product = ({title, alt, descr, priceBig, priceCombo, img, id}) => {
             title: {title},
             img: {img},
             alt: {alt},
-            description: {descr},
+            descr: {descr},
             shipment_time: 0,
-            price_grande: {priceBig},
-            price_combo: {priceCombo},
+            priceBig: {priceBig},
+            priceCombo: {priceCombo},
             id: {id}
           }}
         >

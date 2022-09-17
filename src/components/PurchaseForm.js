@@ -1,13 +1,20 @@
-// import PagSeguro from './PagSeguro'
-// import {Link} from 'react-router-dom'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import PhoneInput from 'react-phone-number-input/input'
 import FormFilled from './FormFilled'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
+const PurchaseForm = () => {
 
+  const navigate = useNavigate()
 
-const PurchaseForm = ({data}) => {
+  const deliveryCost = useSelector((state) => state.delivery.delivery)
+  const actualCart = useSelector((state) => state.cart.cart)
 
+  //if the page is refreshed and the cart is cleared
+  useEffect(() => {
+    if (actualCart.length === 0) navigate("/home", { replace: true })
+  }, [])
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -26,7 +33,7 @@ const PurchaseForm = ({data}) => {
   const handleSubmit = (e) => {
     e.preventDefault() 
     
-    console.log(data)
+    
     if (phone.length === 14 && phone.includes('+5521')) {
       setShowMethods(true)
       
@@ -39,20 +46,12 @@ const PurchaseForm = ({data}) => {
         street: street,
         number: number,
         complement: complement,
-        ordenNumber: data.ordenNumber,
-        delivery: data.delivery,
-        purchase: data.purchase,
-        total: data.total
+        ordenCode: Math.floor(Math.random() * 100000),
       }
       
       setInputDisabled(true)
       setButtonDisabled(true)
-      ////////////
-
       setUserData(buyerData)
-      
-      // console.log(buyerData)
-     ////////////////
 
     } else {
       setShowMethods(false)
@@ -103,9 +102,8 @@ const PurchaseForm = ({data}) => {
             type="tel"  
             required
             disabled={inputDisabled}
-          />
-          
-          {data.delivery !== 0 && 
+          />          
+          {deliveryCost > 0 && 
             <>
               <h3 className="purchase__subtitle">Endereço de Entrega:</h3> 
               <input 
@@ -161,7 +159,7 @@ const PurchaseForm = ({data}) => {
             Pronto!
           </button>
         </form>
-        {showMethods && <FormFilled data={userData} />}
+        {showMethods && <FormFilled userData = {userData}/>}
       </div>
     </div>
   )

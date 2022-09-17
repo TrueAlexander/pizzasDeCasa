@@ -1,29 +1,24 @@
-import { useLocation, Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import Header from "../components/Header"
 import PurchaseForm from "../components/PurchaseForm"
+import { useDispatch } from "react-redux"
+import { removeDelivery } from "../features/deliverySlice"
 
 
 
 const Payment = () => {
 
-  const location = useLocation()
-
-  console.log(location.state);
+  const dispatch = useDispatch()
 
   return (
     <div className="payment">
-      <Header
-          cost={0}
-          qty={0}
-          visibility={false}
-        />   
-      <PurchaseForm
-        data={location.state}
-      />
+      <Header visibility={false} />   
+      <PurchaseForm />
       <Link
-        to="/cart"
+        to="/home"
+        onClick={() => dispatch(removeDelivery())}
         className="btn"
-      >Voltar a cesta</Link>
+      >Voltar a Menu</Link>
     </div>   
   )
 }

@@ -1,6 +1,7 @@
-import { Link } from 'react-router-dom'
 import pixLogo from './../images/pix-logo.jpg'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react'
 
 
 
@@ -8,27 +9,17 @@ const FormFilled = (userData) => {
 
   const navigate = useNavigate()
 
-  console.log(userData);
-
-  const clickHandler = () => {
-    
-    
+  const clickHandler = () => {   
     navigate("./../pix", {
-      state: {
-        name: userData.data.name,
-        phone: userData.data.phone,
-        email: userData.data.email,
-        ordenNumber: userData.data.ordenNumber,
-        purchase: userData.data.purchase,
-        zipcode: userData.data.zipcode,
-        address: userData.data.street + " " + userData.data.number + " " + userData.data.complement,
-        // total: userData.data.orden[0].cost,
-        delivery: userData.data.delivery,
-
-
-      }
+      state: userData
     })
   }
+
+  const actualCart = useSelector((state) => state.cart.cart)
+  //if the page is refreshed and the cart is cleared
+  useEffect(() => {
+    if (actualCart.length === 0) navigate("/home", { replace: true })
+  }, [])
 
   return (
     <>
@@ -38,8 +29,7 @@ const FormFilled = (userData) => {
           <button 
             className='pix__btn' 
             onClick={clickHandler}
-            title='Pagar com PIX'
-          
+            title='Pagar com PIX'  
           >
             <img src={pixLogo} alt="pix" />  
           </button>
