@@ -1,4 +1,4 @@
-https://pizzas-de-casa-7ouhm9jg0-truealexander.vercel.app/
+https://pizzas-de-casa.vercel.app/
 
 changing the functionality to Redux-Toolkit
 
