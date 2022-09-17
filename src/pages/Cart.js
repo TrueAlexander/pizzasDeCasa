@@ -4,6 +4,7 @@ import Delivery from "../components/Delivery"
 import RenderCartTable from "../components/RenderCartTable"
 import { useState } from "react"
 import { clearCart } from "../features/cartSlice"
+import { removeDelivery } from "../features/deliverySlice"
 import { useDispatch, useSelector } from "react-redux"
 
 const Cart = () => {
@@ -20,28 +21,14 @@ const Cart = () => {
     return res
   }
 
-
   const [disabled, setDisabled] = useState(actualCart.length > 0 ? false : true)
 
   const clickHandler = () => {
     setDisabled(true)
     dispatch(clearCart())
+    dispatch(removeDelivery())
   }
 
-  const clickPayment = () => {
-  
-    // const ordenNumber = Math.floor(Math.random()*1000000)
-    navigate("/payment", {
-      state: {
-        // purchase: arrToRender,
-        // delivery: del,
-        // ordenNumber: ordenNumber,
-        // total: childData + del
-      }
-    })
-  }
-
- 
   return (
     <div className="cart">
       <Header
@@ -53,13 +40,14 @@ const Cart = () => {
         <Delivery disabled={disabled} />
         <h3>Total a pagar:</h3>
         <h2 className="cart__total">
-          {deliveryCost + totalCost()} Rs</h2>
+          {deliveryCost + totalCost()} Rs
+        </h2>
       </div>
       <Link className="cart__btn btn" to="/home">Voltar ao Menu</Link>
       <button 
         className="cart__btn btn" 
         disabled={disabled}
-        onClick={clickPayment} 
+        onClick={() => navigate("/payment")} 
       >
         Pagar
       </button>
