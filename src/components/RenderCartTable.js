@@ -45,14 +45,14 @@ const RenderCartTable = ({setDisabled}) => {
       
         return (
           <div className="cart__row" key={el.id}>
-            <div className="cart__item"><p>{el.title}</p><button onClick={excluir} className="btn btn_small">excluir</button></div>
+            <div className="cart__item">{el.title}<button onClick={excluir} className="btn btn_small">excluir</button></div>
             <div className="cart__item">{el.quantity}</div>
             <div className="cart__item">{el.price}</div>
             <div className="cart__item">{el.cost}</div>
           </div>
         )   
       }    
-    ) : <div className="cart__empty" key="empty">Sua Cesta está vazia</div>
+    ) : <div className="cart__empty" key="empty">Sua cesta está vazia!</div>
   }
   
   return (

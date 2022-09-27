@@ -16,7 +16,7 @@ const Delivery = ({ disabled }) => {
       <div className="delivery__row">
           <div className="delivery__options">
             <div className="delivery__input">
-              <label htmlFor="delivery1">Retirar de Pizzas de Casa   <small>(Av. R. Branco, 888, art. 1401)</small></label>
+              <label htmlFor="delivery1">Retirar de Pizzas de Casa   <small>(Av. R. Branco, 888, apt. 1401)</small></label>
               <input
                 onChange={() => {
                   dispatch(removeDelivery())
