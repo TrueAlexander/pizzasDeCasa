@@ -1,5 +1,6 @@
 import dataProducts from "../dataProducts.json"
 import Product from "./Product"
+import 'animate.css'
 
 const FillMenu = () => {
   return dataProducts.map((el) => {

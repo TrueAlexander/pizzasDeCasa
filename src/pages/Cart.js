@@ -35,29 +35,31 @@ const Cart = () => {
         visibility = {false}  
       />
       <div className="container">
-        <h2>Sua Cesta</h2>      
-        <RenderCartTable setDisabled={setDisabled} />
-        <Delivery disabled={disabled} />
-        <h3>Total a pagar:</h3>
-        <h2 className="cart__total">
-          {deliveryCost + totalCost()} Rs
-        </h2>
+        <div className="cart__box">
+          <h2>Sua Cesta</h2>      
+          <RenderCartTable setDisabled={setDisabled} />
+          <Delivery disabled={disabled} />
+          <h3>Total a pagar:</h3>
+          <h2 className="cart__total">
+            {deliveryCost + totalCost()} Rs
+          </h2>
+          <Link className="cart__btn btn" to="/home">Voltar ao Menu</Link>
+          <button 
+            className="cart__btn btn" 
+            disabled={disabled}
+            onClick={() => navigate("/payment")} 
+          >
+            Pagar
+          </button>
+          <button 
+            className="cart__btn btn"
+            onClick={clickHandler}
+            disabled={disabled}
+          >
+            Vaziar a cesta
+          </button>
+        </div>
       </div>
-      <Link className="cart__btn btn" to="/home">Voltar ao Menu</Link>
-      <button 
-        className="cart__btn btn" 
-        disabled={disabled}
-        onClick={() => navigate("/payment")} 
-      >
-        Pagar
-      </button>
-      <button 
-        className="cart__btn btn"
-        onClick={clickHandler}
-        disabled={disabled}
-      >
-        Vaziar a cesta
-      </button>
     </div>
   )
 }

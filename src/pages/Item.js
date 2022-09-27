@@ -13,13 +13,13 @@ const Item = () => {
     content: {
       top: '50%',
       left: '50%',
-      height: '25vh',
-      width: '25%',
+      height: '30vh',
+      maxWidth: '600px',
       right: 'auto',
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
-      backgroundColor: '#6d4d44'
+      backgroundColor: '#5e0303'
     },
   }
   const [modalIsOpen, setIsOpen] = useState(false)
@@ -91,64 +91,64 @@ const Item = () => {
       />
       <div className="container">
       <div className="item__box">
-          <div className="item__image">
-            <img src={dataItem.img} alt={dataItem.alt} title={dataItem.title} />
-          </div>
-          <div className="item__title"><h2>{dataItem.title}</h2></div>
-          <div className="item__description description">{dataItem.descr}</div>
-          <div className="item__row">
-            <div className="item__options">
-              <div className="item__input">
-                <label htmlFor="1">Pizza grande 27 cm de diametro</label>
-                <input 
-                  onChange={() => {
-                    setPrice(dataItem.priceBig)
-                    setTitle(dataItem.title)
-                  }} 
-                  type="radio" 
-                  name="options" 
-                  value="1" 
-                  defaultChecked={true} />  
-              </div>
-              <div className="item__input">
-                <label htmlFor="2">Combo 6 pizzas de 7 cm de diametro</label>
-                <input 
-                  onChange={() => {
-                    setPrice(dataItem.priceCombo)
-                    setTitle(dataItem.title + " Combo")
-                  }} 
-                  type="radio" 
-                  name="options" 
-                  value="2" 
-                />
-              </div>
+        <div className="item__image">
+          <img src={dataItem.img} alt={dataItem.alt} title={dataItem.title} />
+        </div>
+        <div className="item__title"><h2>{dataItem.title}</h2></div>
+        <div className="item__description description">{dataItem.descr}</div>
+        <div className="item__row">
+          <div className="item__options">
+            <div className="item__input">
+              <label htmlFor="1">Pizza grande 27 cm de diametro</label>
+              <input 
+                onChange={() => {
+                  setPrice(dataItem.priceBig)
+                  setTitle(dataItem.title)
+                }} 
+                type="radio" 
+                name="options" 
+                value="1" 
+                defaultChecked={true} />  
             </div>
-            <div className="item__column">
-              <div className="item__price">
-                <span>Preço:  </span>
-                <span>
-                    {price + "  Rs"}
-                  </span>    
-              </div>
-              <div className="item__quantity">
-                <span>Quantidade:  </span>
-                <button 
-                    onClick={() => setQuantity(quantity > 1 ? prev => prev - 1 : quantity)} 
-                    className="quantity__btn btn"> − </button>
-                <span>{quantity}</span>
-                <button 
-                    onClick={() => setQuantity(quantity < 5 ? prev => prev + 1 : quantity)} 
-                    className="quantity__btn btn"> + </button>
-              </div>
-              <div className="item__cost">
-                <span>Valor:  </span>
-                <span>
-                    {cost + " Rs"}
-                  </span>    
-              </div>
+            <div className="item__input">
+              <label htmlFor="2">Combo 6 pizzas de 7 cm de diametro</label>
+              <input 
+                onChange={() => {
+                  setPrice(dataItem.priceCombo)
+                  setTitle(dataItem.title + " Combo")
+                }} 
+                type="radio" 
+                name="options" 
+                value="2" 
+              />
             </div>
           </div>
-          <Link className="item__btn btn" to="./../home">Voltar ao Menu</Link> 
+          <div className="item__column">
+            <div className="item__price">
+              <span>Preço:  </span>
+              <span>
+                  {price + "  Rs"}
+                </span>    
+            </div>
+            <div className="item__quantity">
+              <span>Quantidade:  </span>
+              <button 
+                  onClick={() => setQuantity(quantity > 1 ? prev => prev - 1 : quantity)} 
+                  className="quantity__btn btn"> − </button>
+              <span>{quantity}</span>
+              <button 
+                  onClick={() => setQuantity(quantity < 5 ? prev => prev + 1 : quantity)} 
+                  className="quantity__btn btn"> + </button>
+            </div>
+            <div className="item__cost">
+              <span>Valor:  </span>
+              <span>
+                  {cost + " Rs"}
+                </span>    
+            </div>
+          </div>
+        </div>
+        <Link className="item__btn btn" to="./../home">Voltar ao Menu</Link> 
         <button 
           className="item__btn btn"
           onClick={addToCart}
@@ -156,7 +156,6 @@ const Item = () => {
           Adicionar a cesta
         </button> 
         </div>
-
       </div>
     </div>
   )

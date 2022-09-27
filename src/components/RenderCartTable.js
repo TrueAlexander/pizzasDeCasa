@@ -45,7 +45,7 @@ const RenderCartTable = ({setDisabled}) => {
       
         return (
           <div className="cart__row" key={el.id}>
-            <div className="cart__item">{el.title} <button onClick={excluir} className="btn btn_small">excluir</button></div>
+            <div className="cart__item"><p>{el.title}</p><button onClick={excluir} className="btn btn_small">excluir</button></div>
             <div className="cart__item">{el.quantity}</div>
             <div className="cart__item">{el.price}</div>
             <div className="cart__item">{el.cost}</div>
@@ -59,7 +59,7 @@ const RenderCartTable = ({setDisabled}) => {
     <div className="cart__container">
       <div className="cart__row">
         <div className="cart__item">Nome</div>
-        <div className="cart__item">Quantidade</div>
+        <div className="cart__item">Quant.</div>
         <div className="cart__item">Preço, Rs</div>
         <div className="cart__item">Valor, Rs</div>
       </div>
