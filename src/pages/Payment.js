@@ -12,13 +12,15 @@ const Payment = () => {
 
   return (
     <div className="payment">
-      <Header visibility={false} />   
-      <PurchaseForm />
-      <Link
-        to="/home"
-        onClick={() => dispatch(removeDelivery())}
-        className="btn"
-      >Voltar a Menu</Link>
+      <Header visibility={false} />
+      <div className="payment__box">
+        <PurchaseForm />
+        <Link
+          to="/home"
+          onClick={() => dispatch(removeDelivery())}
+          className="btn"
+        >Voltar a Menu</Link>
+      </div>     
     </div>   
   )
 }
