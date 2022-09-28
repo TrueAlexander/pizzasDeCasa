@@ -25,12 +25,13 @@ const Pix = () => {
 
   const renderCart = () => {
     return (actualCart.map((item, index) => {
-      return <h4 
+      return <h3 
                 className="pix__product"
                 key={index}
               >
-                {index + 1 + ". Pizza Deliciosa " + item.title + ", " + item.quantity + " unidades. Valor: " + item.cost + " Rs"}
-              </h4>
+                {index + 1 + ". Pizza Deliciosa " + item.title + ", " + item.quantity + " un."}
+                <h3 className="pix__product" >Valor: {item.cost} Rs</h3>
+              </h3>
     }))
   }
 

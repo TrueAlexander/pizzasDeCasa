@@ -873,7 +873,7 @@ select {
 }
 
 .pix__content form .btn {
-  margin: 0 20px;
+  margin: 20px;
 }
 
 .pix__content h2, .pix__content h3, .pix__content h4 {
@@ -885,12 +885,15 @@ select {
 }
 
 @media (max-width:850px) {
+  .pix__container {
+    margin: 0 10px;
+  }
   .pix__row {
     display: block;
   }
 
   .pix__content {
-    padding: 10px 10px 0;
+    padding: 10px 5px 0;
   }
 
   .pix__subtitle {
@@ -919,5 +922,9 @@ select {
 
   .pix__container h3 {
     font-size: 14px;
+  }
+
+  .pix__content form .btn {
+    margin: 10px;
   }
 }
