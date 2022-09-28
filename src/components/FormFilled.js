@@ -27,7 +27,7 @@ const FormFilled = (userData) => {
       <div className="purchase__methods">
         <div className="purchase__method">
           <button 
-            className='pix__btn' 
+            className='purchase__pix' 
             onClick={clickHandler}
             title='Pagar com PIX'  
           >
