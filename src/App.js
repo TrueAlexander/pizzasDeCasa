@@ -6,12 +6,14 @@ import Initial from "./pages/Initial"
 import Payment from "./pages/Payment"
 import Pix from "./pages/Pix"
 import WhatsappIcon from "./components/WhatsappIcon"
+import ScrollToTop from "./ScrollToTop"
 
 const App = () => {
   return (
     <div className="app">
       <WhatsappIcon/>
       <BrowserRouter>
+        <ScrollToTop/>
         <Routes>
           <Route path="/" element={<Initial/>} />
           <Route path="/home" element={<Home/>} />

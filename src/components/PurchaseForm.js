@@ -3,6 +3,8 @@ import PhoneInput from 'react-phone-number-input/input'
 import FormFilled from './FormFilled'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { animateScroll as scroll } from 'react-scroll'
+
 
 const PurchaseForm = () => {
 
@@ -155,6 +157,7 @@ const PurchaseForm = () => {
             className="btn" 
             disabled={buttonDisabled}
             title="Pagar"
+            onClick={() => scroll.scrollToBottom()}
           >
             Pronto!
           </button>

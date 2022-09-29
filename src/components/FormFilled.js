@@ -23,7 +23,7 @@ const FormFilled = (userData) => {
 
   return (
     <>
-      <h3 className="purchase__subtitle">Atualmente o único metodo de pago disponivel é o PIX:</h3>
+      <h3 id="pay" className="purchase__subtitle">Atualmente o único metodo de pago disponivel é o PIX:</h3>
       <div className="purchase__methods">
         <div className="purchase__method">
           <button 
