@@ -2,10 +2,7 @@ import HeaderCart from "./HeaderCart"
 import pizza from "./../images/icons/pizza_icon.svg"
 import { Link } from "react-router-dom"
 
-
 const Header = ({visibility}) => {
-  
-
   
   return (
     <div className="header">

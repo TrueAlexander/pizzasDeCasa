@@ -6,7 +6,7 @@ import Initial from "./pages/Initial"
 import Payment from "./pages/Payment"
 import Pix from "./pages/Pix"
 import WhatsappIcon from "./components/WhatsappIcon"
-import ScrollToTop from "./ScrollToTop"
+import ScrollToTop from "./utils/ScrollToTop"
 
 const App = () => {
   return (

@@ -1,0 +1,64 @@
+/* ---Home--- */
+
+.home {
+  background-image: url("./../images/horizontal.jpg");
+  background-position: center;
+  background-size: 100% 25vh;
+}
+
+.home__container {
+  margin: 30px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.home__card {
+  flex: 0 1 370px;
+  margin: 0 30px 75px;
+  overflow: hidden;
+  background-color: #f4c51c69;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 0 5px black;
+}
+
+/* ---Product--- */
+
+.product__image {
+  border-radius: 20px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.product__image img {
+  width: 100%;
+}
+
+.product__title {
+  margin: 15px 0;
+}
+
+.product__btn {
+  font-size: 1em;
+  margin: 10px 0 0;
+}
+
+.product__description {
+  text-align: justify;
+  padding: 0;
+}
+
+
+@media (max-width: 500px) {
+  .home__card {
+    flex: 0 1 310px;
+    margin: 0 0 45px;
+    padding: 10px;
+  }
+
+  .product__description {
+    line-height: 18px;
+    font-size: 15px;
+  }
+}
