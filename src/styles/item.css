@@ -1,11 +1,5 @@
 /* ---Item--- */
 
-.item {
-  background-image: url("./../images/horizontal.jpg");
-  background-position: center;
-  background-size: 100% 25vh;
-}
-
 .item__box {
   background-color: #f4c51c69;
   padding: 15px;

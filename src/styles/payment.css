@@ -2,9 +2,6 @@
 /* ---Payment--- */
 
 .payment {
-  background-image: url("./../images/horizontal.jpg");
-  background-position: center;
-  background-size: 100% 25vh;
   min-height: 100vh;
   padding-top: 110px;
 }

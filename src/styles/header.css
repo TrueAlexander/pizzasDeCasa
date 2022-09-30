@@ -8,6 +8,7 @@
   justify-content: center;
   background: linear-gradient(#5e0303b8, #f4c51c9a);
   align-items: center;
+  z-index: 2;
 }
 
 .header__logo {

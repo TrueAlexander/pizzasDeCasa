@@ -1,9 +1,6 @@
 /* ---Cart--- */
 
 .cart {
-  background-image: url("./../images/horizontal.jpg");
-  background-position: center;
-  background-size: 100% 25vh;
   min-height: 100vh;
 }
 

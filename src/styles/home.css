@@ -1,16 +1,16 @@
 /* ---Home--- */
 
-.home {
-  background-image: url("./../images/horizontal.jpg");
-  background-position: center;
-  background-size: 100% 25vh;
-}
-
 .home__container {
   margin: 30px 0 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+.home__loading {
+  margin-top: 100px;
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .home__card {
