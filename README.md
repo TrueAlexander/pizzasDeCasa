@@ -1,5 +1,6 @@
 https://pizzas-de-casa.vercel.app/
 
+ReactJS / Redux-toolkit / CSS
 
 # Getting Started with Create React App
 
