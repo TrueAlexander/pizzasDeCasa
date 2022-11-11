@@ -24,6 +24,12 @@
 }
 
 /* ---Product--- */
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 
 .product__image {
   border-radius: 20px;
@@ -36,12 +42,12 @@
 }
 
 .product__title {
-  margin: 15px 0;
+  margin: 5px 0;
 }
 
 .product__btn {
   font-size: 1em;
-  margin: 10px 0 0;
+  margin: 10px auto 0;
 }
 
 .product__description {
